@@ -57,6 +57,8 @@ export function PublicationAbout({ locale }: { locale: Locale }) {
         <p>{t('Este caderno é parte disso. Escrevo sobre o que entendi — e sobre o que ainda não entendi. Quando dá, transformo a explicação em algo que você pode mexer e testar também.', 'This notebook is part of that. I write about what I understand — and what I still don’t. Whenever possible, I turn the explanation into something you can change and test yourself.')}</p>
         <nav className="publication-socials" aria-label={t('Perfis profissionais', 'Professional profiles')}>
           <a href="https://github.com/driano1221" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+          <a href="https://www.linkedin.com/in/adriano-pires-cunha/" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+          <a href="https://rpubs.com/driano12" target="_blank" rel="noreferrer">RPubs <span aria-hidden="true">↗</span></a>
         </nav>
       </main>
       <footer className="publication-footer"><span>© 2026 Adriano</span><Link href={notebookHome(locale)}>{t('Voltar aos textos', 'Back to essays')} →</Link></footer>

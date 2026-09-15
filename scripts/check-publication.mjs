@@ -35,6 +35,8 @@ for (const [path, title, translation] of [
   const html = await response.text();
   assert.ok(html.includes(title), `${path}: localized biography`);
   assert.ok(html.includes('https://github.com/driano1221'), `${path}: verified GitHub`);
+  assert.ok(html.includes('https://www.linkedin.com/in/adriano-pires-cunha/'), `${path}: LinkedIn from personal vault`);
+  assert.ok(html.includes('https://rpubs.com/driano12'), `${path}: RPubs from personal vault`);
   assert.ok(html.includes(`href="${translation}"`), `${path}: translate current page`);
 }
 console.log('Publication: localized homes, dedicated about pages, experiments and 17 evidence entries passed.');
