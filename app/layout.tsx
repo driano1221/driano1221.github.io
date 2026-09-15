@@ -23,9 +23,9 @@ const dataFont = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: '1994 → 2026 · Redes neurais vistas pela estatística',
+  title: 'Adriano Pires Cunha',
   description:
-    'Contas, aprendizado e perguntas de 1994 que continuam importantes para entender redes neurais.',
+    'Blog e projetos sobre estatística e machine learning.',
 };
 
 export default function RootLayout({

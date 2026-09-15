@@ -1,6 +1,6 @@
-# Inference Notes
+# Adriano Pires Cunha
 
-Adriano's bilingual notebook on statistics and AI, with interactive explanations
+Adriano's bilingual blog on statistics and AI, with interactive explanations
 of Cheng & Titterington's 1994 paper on neural networks.
 
 **Website:** https://driano1221.github.io/

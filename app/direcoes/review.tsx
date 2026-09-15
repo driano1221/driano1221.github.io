@@ -22,58 +22,58 @@ const copy = {
     preview: 'Exploração visual: direção aprovada. Prévia em aperfeiçoamento.',
     brand: 'Redes neurais, vistas de perto', source: 'Cheng & Titterington · Statistical Science',
     title: 'Em 1994, dois estatísticos tentaram prever o futuro das redes neurais.', end: 'O que eles acertaram?',
-    deck: 'O curioso é que várias perguntas continuam familiares. Como escolher uma rede? Como saber se ela aprendeu? E quanto disso a estatística já conhecia?',
+    deck: 'Uma leitura interativa sobre a relação entre estatística e redes neurais, a partir de um artigo de 1994.',
     paper: 'Ler o artigo original', cover: 'Primeira página de Neural Networks: A Review from a Statistical Perspective, de 1994',
     coverCaption: 'O ponto de partida: um artigo de 1994.',
-    hook: 'Começa com uma conta pequena.',
-    prose: 'O artigo tem um exemplo quase engraçado: uma rede neural que escolhe o maior de dois números. Parece trabalho demais para uma coisa tão simples. Justamente por isso dá para abrir a rede e acompanhar tudo o que acontece lá dentro.',
-    demoTitle: 'Qual dos dois é maior?', demoDeck: 'Escolha dois números. Depois siga o caminho até a resposta.',
+    hook: 'Uma rede que encontra o maior número',
+    prose: 'Antes de acompanhar o aprendizado, vale entender como os números percorrem uma rede. Cheng e Titterington apresentam um exemplo em que as conexões foram definidas para encontrar o maior de dois valores. A tarefa é simples, mas permite conferir cada etapa do cálculo e entender o que os círculos e as setas representam.',
+    demoTitle: 'Qual dos dois é maior?', demoDeck: 'Os valores passam por duas subtrações e uma soma. Acompanhe como os resultados de cada caminho se combinam na saída.',
     figure: 'A partir da figura 3 · p. 8', first: 'Primeiro número', second: 'Segundo número',
-    swap: 'Trocar os números', equal: 'E se forem iguais?', steps: ['Os números', 'O que cada parte faz', 'A resposta'],
-    choose: 'Cada número alimenta três contas: duas diferenças e uma soma. As conexões já foram escolhidas para isso. Por enquanto, estamos vendo uma rede calcular, antes de falar em aprender.',
+    swap: 'Trocar os números', equal: 'Deixar os números iguais', steps: ['Os números', 'O que cada parte faz', 'A resposta'],
+    choose: 'Cada entrada participa de três contas. Nas diferenças, a ordem dos números é invertida de um caminho para o outro; no caminho central, os dois são somados. As conexões indicam quais valores chegam a cada operação.',
     calculate: 'Um caminho calcula quanto o primeiro passa do segundo. O outro faz o contrário. Se a diferença for negativa, ela vira zero. O caminho do meio guarda a soma dos dois.',
-    answer: 'No fim, a rede soma esses três resultados e divide por dois. O que sobra é exatamente o maior número. Mude os valores e veja a conta se refazer.',
+    answer: 'A saída soma os três resultados e divide por dois. Com 7 e 3, por exemplo, a conta é (4 + 10 + 0) / 2 = 7. Ao trocar as entradas, os resultados das diferenças mudam de caminho, mas o maior número continua sendo o mesmo.',
     input: 'ENTRADAS', process: 'CONTAS NO CAMINHO', output: 'MAIOR NÚMERO',
     positive: 'negativo vira 0', sum: 'somar os dois', halve: 'somar e dividir por 2', result: 'Resultado',
     read: 'Siga a conta', original: 'No artigo, em 1994', today: 'A mesma ideia, aberta',
     scanAlt: 'Figura 3 original: rede para encontrar o maior de dois números positivos, página 8 do artigo',
     annotation: 'As letras parecem complicadas. Mas cada nó só faz uma conta pequena. Na versão interativa, as letras ganham valores que você pode mudar.',
     change: 'Mexa nos controles e acompanhe os valores.',
-    takeaway: 'Uma rede pode ser uma conta que ganhou caminhos.',
-    closing: 'Aqui, as conexões foram definidas à mão. Isso mostra como a rede calcula, mas deixa a pergunta mais interessante em aberto: de onde vêm essas conexões quando não sabemos a resposta?',
+    takeaway: 'Quando as conexões precisam ser aprendidas',
+    closing: 'Mudar os números altera a resposta, mas não as regras desta rede. Ela encontra o maior valor porque as operações foram escolhidas para isso. Em tarefas como reconhecer uma espécie de flor, nem sempre sabemos definir uma regra tão diretamente. Podemos, então, usar exemplos para ajustar os pesos das conexões, que determinam a contribuição de cada entrada para a resposta.',
     qualifier: 'Adaptação do caminho que calcula o máximo na figura 3. Agrupamos a + b em um nó para deixar a conta visível; na figura original, esses termos vão direto à saída. Os dois indicadores auxiliares foram omitidos. A rede deste exemplo não está sendo treinada.',
     note: 'Por que essa figura?', noteBody: 'Ela deixa a mecânica visível antes de introduzir aprendizado. Não é uma demonstração de que toda rede se resume a uma regressão.',
     leftDetail: 'Fica só com a parte positiva de a − b.', middleDetail: 'Guarda a + b, para usar na última conta.', rightDetail: 'Fica só com a parte positiva de b − a.',
-    sourceLabel: 'Fonte e adaptação', conclusion: 'E o aprendizado?', back: 'Voltar à abertura',
+    sourceLabel: 'Fonte e adaptação', conclusion: 'Do cálculo ao aprendizado', back: 'Voltar à abertura',
   },
   en: {
     review: 'Selected direction: 2', names: ['Editorial essay', 'Visual exploration', 'Annotated paper'],
     preview: 'Visual exploration: approved direction. Preview in refinement.',
     brand: 'A closer look at neural networks', source: 'Cheng & Titterington · Statistical Science',
     title: 'In 1994, two statisticians tried to predict the future of neural networks.', end: 'What did they get right?',
-    deck: 'The curious thing is how familiar their questions still sound. How do you choose a network? How do you know it learned anything? And how much of this did statistics already know?',
+    deck: 'An interactive reading of a 1994 paper exploring the relationship between statistics and neural networks.',
     paper: 'Read the original paper', cover: 'First page of Neural Networks: A Review from a Statistical Perspective, published in 1994',
     coverCaption: 'The starting point: a paper from 1994.',
-    hook: 'It starts with a small calculation.',
-    prose: 'The paper has an almost funny example: a neural network that picks the larger of two numbers. That feels like a lot of machinery for a tiny task. Which is exactly why we can open it up and follow everything going on inside.',
-    demoTitle: 'Which one is larger?', demoDeck: 'Choose two numbers. Then follow their path to the answer.',
+    hook: 'A network that finds the larger number',
+    prose: 'Before looking at learning, it helps to understand how numbers move through a network. Cheng and Titterington present an example with connections chosen to find the larger of two values. The task is simple, but it lets us check each calculation and understand what the circles and arrows represent.',
+    demoTitle: 'Which one is larger?', demoDeck: 'The inputs feed into two subtractions and one addition. Follow how the results of each path are combined at the output.',
     figure: 'Adapted from figure 3 · p. 8', first: 'First number', second: 'Second number',
-    swap: 'Swap the numbers', equal: 'What if they are equal?', steps: ['The inputs', 'What each part does', 'The answer'],
-    choose: 'Each number feeds three calculations: two differences and one sum. The connections have already been chosen for this task. For now, we are watching a network compute, before talking about learning.',
+    swap: 'Swap the numbers', equal: 'Make the numbers equal', steps: ['The inputs', 'What each part does', 'The answer'],
+    choose: 'Each input contributes to three calculations. The subtraction paths use the numbers in opposite orders, while the middle path adds them. The connections show which values reach each operation.',
     calculate: 'One path calculates how much the first number exceeds the second. The other does the reverse. A negative difference becomes zero. The middle path keeps the sum of both numbers.',
-    answer: 'Finally, the network adds those three results and divides by two. What remains is exactly the larger number. Change the inputs and watch the calculation update.',
+    answer: 'The output adds the three results and divides by two. With 7 and 3, for example, the calculation is (4 + 10 + 0) / 2 = 7. Swapping the inputs moves the subtraction results to opposite paths, but the larger number stays the same.',
     input: 'INPUTS', process: 'ALONG THE WAY', output: 'LARGER NUMBER',
     positive: 'negative becomes 0', sum: 'add both numbers', halve: 'add and divide by 2', result: 'Result',
     read: 'Follow the calculation', original: 'In the paper, in 1994', today: 'The same idea, opened up',
     scanAlt: 'Original figure 3: a network that finds the larger of two positive numbers, page 8 of the paper',
     annotation: 'The symbols look complicated. But each node just performs a small calculation. In the interactive version, the symbols become values you can change.',
     change: 'Move the controls and follow the values.',
-    takeaway: 'A network can be a calculation with paths.',
-    closing: 'Here, the connections were set by hand. That shows how the network computes, but leaves the more interesting question open: where do those connections come from when we do not know the answer?',
+    takeaway: 'When the connections need to be learned',
+    closing: 'Changing the inputs changes the answer, but not this network’s rules. It finds the larger value because the operations were chosen for that purpose. For a task such as identifying a flower species, we may not know how to specify a rule so directly. We can instead use examples to adjust the connection weights, which determine how much each input contributes to the answer.',
     qualifier: 'Adapted from the maximum-computing path in figure 3. We group a + b into a node to make the calculation visible; in the original, those terms go directly to the output. The two auxiliary indicators are omitted. This example is not training a network.',
     note: 'Why this figure?', noteBody: 'It makes the mechanics visible before introducing learning. It does not demonstrate that every network reduces to a regression.',
     leftDetail: 'Keeps only the positive part of a − b.', middleDetail: 'Keeps a + b for the final calculation.', rightDetail: 'Keeps only the positive part of b − a.',
-    sourceLabel: 'Source and adaptation', conclusion: 'What about learning?', back: 'Back to the opening',
+    sourceLabel: 'Source and adaptation', conclusion: 'From calculation to learning', back: 'Back to the opening',
   },
 };
 
@@ -111,7 +111,7 @@ export function DesignReview({ siteLocale, onLocaleChange, children }: { siteLoc
     </nav>}
 
     <main className="r-main" id="review-top">
-      {siteLocale ? <div className="publication-article-back"><a href={notebookHome(locale)}>← &nbsp; {locale==='pt'?'Todos os textos':'All posts'}</a></div> : <header className="r-masthead"><span>{text.brand}</span><span>1994 — 2026</span></header>}
+      {siteLocale ? <div className="publication-article-back"><a href={notebookHome(locale)}>← &nbsp; {locale==='pt'?'Voltar ao blog':'Back to the blog'}</a></div> : <header className="r-masthead"><span>{text.brand}</span><span>1994 — 2026</span></header>}
       <section className="r-hero" aria-labelledby="r-title">
         <div className="r-hero-copy">
           <p className="r-kicker">{text.source}</p>
@@ -125,6 +125,20 @@ export function DesignReview({ siteLocale, onLocaleChange, children }: { siteLoc
         </figure>
       </section>
 
+      {siteLocale && <div className="story-prose publication-opening">
+        <p>{locale === 'pt'
+          ? 'Em 1994, as redes neurais já estavam sendo estudadas para reconhecer escrita à mão, processar fala e fazer previsões. Embora a inspiração viesse do cérebro, muitas aplicações envolviam problemas familiares à estatística: usar observações para encontrar padrões e estimar uma resposta. Essa proximidade é o ponto de partida do artigo de Bing Cheng e D. M. Titterington que vamos acompanhar aqui.'
+          : 'In 1994, neural networks were already being studied for handwriting recognition, speech processing and forecasting. Although they were inspired by the brain, many applications involved problems familiar to statisticians: using observations to find patterns and estimate an answer. This overlap is the starting point of the paper by Bing Cheng and D. M. Titterington that we’ll follow here.'}</p>
+        <p>{locale === 'pt'
+          ? 'Nos anos anteriores, pesquisas sobre treinamento já mostravam como ajustar as conexões de uma rede a partir dos erros que ela cometia. Um trabalho de Rumelhart, Hinton e Williams, publicado em 1986, descrevia como esse processo permitia que as camadas internas passassem a representar características úteis para a tarefa. Não era preciso definir à mão cada cálculo intermediário, como faremos no primeiro exemplo desta postagem.'
+          : 'Research in the preceding years had already shown how to adjust a network’s connections using its errors. A 1986 paper by Rumelhart, Hinton and Williams described how this process allowed internal layers to represent useful features of a task. Each intermediate calculation no longer had to be specified by hand, as it will be in our first example.'} <a href="https://doi.org/10.1038/323533a0" target="_blank" rel="noreferrer">Rumelhart, Hinton &amp; Williams, 1986 ↗</a></p>
+        <p>{locale === 'pt'
+          ? 'Para quem vinha da estatística, isso trazia tanto possibilidades quanto perguntas. Como escolher uma rede adequada ao problema? Como avaliar se ela funcionava com dados novos? E quando valia a pena usar uma rede em vez de um método mais simples? Cheng e Titterington organizaram essa discussão aproximando as arquiteturas e os métodos de treinamento de conceitos como regressão, classificação e agrupamento. A intenção era ajudar pesquisadores dessas áreas a reconhecer o que tinham em comum.'
+          : 'For someone coming from statistics, this raised both possibilities and questions. How should a network be chosen for a particular problem? How could its performance on new data be assessed? And when was a network worth using instead of a simpler method? Cheng and Titterington organized this discussion by relating architectures and training methods to concepts such as regression, classification and clustering. Their aim was to help researchers in these fields recognize their shared ground.'}</p>
+        <p>{locale === 'pt'
+          ? 'Voltar ao artigo hoje permite acompanhar essa relação antes dos desenvolvimentos que vieram depois. Algumas ideias continuam úteis para entender as redes; outras precisam ser lidas considerando o que se sabia naquele momento. Ao longo da postagem, vamos reconstruir alguns exemplos e acompanhar o que aconteceu com as questões levantadas pelos autores, começando pelas contas e avançando até o aprendizado.'
+          : 'Returning to the paper lets us examine this relationship before the developments that followed. Some ideas remain useful for understanding networks; others need to be read in the context of what was known at the time. We’ll reconstruct several examples and follow what happened to the questions the authors raised, starting with calculations and moving on to learning.'}</p>
+      </div>}
       {siteLocale && <nav className="publication-contents" aria-label={locale==='pt'?'Neste artigo':'In this article'}><span>{locale==='pt'?'Neste artigo':'In this article'}</span><a href="#review-demo">{locale==='pt'?'As contas':'The calculations'}</a><a href="#learning">{locale==='pt'?'O aprendizado':'Learning'}</a><a href="#generalization">{locale==='pt'?'O teste':'Testing'}</a><a href="#judgments">{locale==='pt'?'O que ficou':'What held up'}</a><a href="#memory">{locale==='pt'?'A memória':'Memory'}</a><a href="#evidence">{locale==='pt'?'As fontes':'Sources'}</a></nav>}
       <section className="r-reading" aria-labelledby="r-hook">
         <div className="r-reading-main"><h2 id="r-hook">{text.hook}</h2><p>{text.prose}</p></div>
@@ -162,7 +176,7 @@ export function DesignReview({ siteLocale, onLocaleChange, children }: { siteLoc
 
       <section className="r-ending"><p className="r-kicker">{text.conclusion}</p><h2>{text.takeaway}</h2><p>{text.closing}</p></section>
       {children}
-      <footer className="r-footer"><span>{siteLocale ? (locale==='pt'?'Adriano · Estatística e machine learning':'Adriano · Statistics and machine learning') : text.preview}</span><a href="#review-top">{text.back} ↑</a></footer>
+      <footer className="r-footer"><span>{siteLocale ? (locale==='pt'?'Adriano Pires Cunha':'Adriano Pires Cunha') : text.preview}</span><a href="#review-top">{text.back} ↑</a></footer>
     </main>
   </div>;
 }

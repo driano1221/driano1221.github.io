@@ -42,7 +42,7 @@ export const evidence: Evidence[] = [
   {
     id:'E01', title:['Estatística escrita como rede','Statistics expressed as networks'], pages:'4–6, 26', category:['observation'], confidence:'high', sources:['ntk'],
     original:['O artigo relaciona redes a regressão, discriminação, componentes principais, densidades e agrupamentos.','The paper connects networks to regression, discrimination, principal components, densities and clustering.'],
-    outcome:['A ponte ganhou novas formas. O neural tangent kernel permite analisar redes muito largas por ferramentas de métodos de kernel.','The bridge took new forms. The neural tangent kernel allows very wide networks to be analyzed using kernel-method tools.'],
+    outcome:['Essa relação também aparece em trabalhos posteriores. O neural tangent kernel, por exemplo, descreve certos regimes de redes muito largas usando ferramentas que comparam a semelhança entre entradas.','This relationship also appears in later work. The neural tangent kernel, for example, describes certain regimes of very wide networks using tools that compare similarities between inputs.'],
     caveat:['A equivalência depende do regime estudado. Não significa que toda rede moderna seja, na prática, um modelo simples com outro nome.','The equivalence depends on the regime studied. It does not mean that every modern network is, in practice, a simple model under a different name.'],
   },
   {
@@ -54,7 +54,7 @@ export const evidence: Evidence[] = [
   {
     id:'E03', title:['Representar não é aprender','Representing is not learning'], pages:'16–19', category:['observation','warning','question'], confidence:'high', sources:['alexnet','transformer','ntk'],
     original:['Uma rede multicamada pode representar funções muito variadas. Isso não garante treinamento fácil nem boas respostas em dados novos.','A multilayer network can represent a wide range of functions. That guarantees neither easy training nor good answers on new data.'],
-    outcome:['Visão e linguagem mostraram a força dessas redes. Mas capacidade de representação, otimização e generalização continuam sendo problemas distintos.','Vision and language demonstrated the power of these networks. Representation, optimization and generalization nevertheless remain distinct problems.'],
+    outcome:['Resultados em visão e linguagem mostraram o que essas redes podem fazer, mas ainda é preciso distinguir três questões: quais funções uma rede consegue representar, como encontrar seus parâmetros e como avaliar sua resposta em dados novos.','Results in vision and language showed what these networks can do, but three questions still need to be distinguished: which functions a network can represent, how to find its parameters, and how to assess its predictions on new data.'],
     caveat:['Um teorema de aproximação não informa sozinho quantos dados, unidades ou recursos serão necessários para aprender uma solução útil.','An approximation theorem alone does not tell us how much data, how many units or how much computation are needed to learn a useful solution.'],
   },
   {
@@ -66,7 +66,7 @@ export const evidence: Evidence[] = [
   {
     id:'E05', title:['O futuro da retropropagação','The future of backpropagation'], pages:'17, 19, 26', category:['question','warning'], confidence:'veryHigh', sources:['alexnet','transformer'],
     original:['O método era popular, mas considerado lento. Os autores perguntam se ele ainda teria lugar.','The method was popular but considered slow. The authors ask whether it would still have a place.'],
-    outcome:['A prática respondeu sim: redes como AlexNet e Transformer usam gradientes calculados por retropropagação. Computação e técnicas de treinamento ampliaram o que era viável.','Practice answered yes: networks such as AlexNet and Transformer use gradients computed by backpropagation. Computing and training techniques expanded what was feasible.'],
+    outcome:['A retropropagação continuou em uso em redes como AlexNet e Transformer. Ela calcula gradientes, que indicam como mudanças nos parâmetros afetam o erro. Avanços em computação e treinamento também ampliaram o que era viável.','Backpropagation remained in use in networks such as AlexNet and Transformer. It computes gradients, which describe how parameter changes affect the error. Advances in computing and training also expanded what was feasible.'],
     caveat:['Sucesso na engenharia não demonstra que o cérebro aprenda pela mesma regra. A pergunta biológica continua separada.','Engineering success does not demonstrate that the brain learns by the same rule. The biological question remains separate.'],
   },
   {
@@ -90,8 +90,8 @@ export const evidence: Evidence[] = [
   {
     id:'E09', title:['Quando faltam dados','When data are missing'], pages:'26', category:['question'], confidence:'high', sources:['brits','miwae'],
     original:['Redes úteis no cotidiano conseguiriam lidar com valores ausentes?','Could networks useful in everyday work handle missing values?'],
-    outcome:['Métodos como BRITS e MIWAE aprenderam a lidar com ausência e imputação em cenários definidos. A possibilidade técnica foi demonstrada.','Methods such as BRITS and MIWAE learned to handle missingness and imputation in defined settings. Technical feasibility was demonstrated.'],
-    caveat:['Por que o dado falta importa. Uma técnica de preenchimento não elimina hipóteses sobre o mecanismo de ausência nem garante incerteza confiável.','Why data are missing matters. A filling-in technique does not remove assumptions about missingness or guarantee reliable uncertainty.'],
+    outcome:['Métodos como BRITS e MIWAE tratam valores ausentes em condições específicas, estimando informações que faltam a partir do restante dos dados. Esse preenchimento é chamado de imputação.','Methods such as BRITS and MIWAE handle missing values under specific conditions, estimating missing information from the rest of the data. This filling-in process is called imputation.'],
+    caveat:['A interpretação depende também do motivo pelo qual o dado está ausente. O preenchimento não elimina as suposições sobre esse processo nem garante, sozinho, uma estimativa confiável de incerteza.','Interpretation also depends on why values are missing. Filling them in does not remove assumptions about that process or, by itself, guarantee a reliable uncertainty estimate.'],
   },
   {
     id:'E10', title:['Entender uma previsão','Understanding a prediction'], pages:'18, 26', category:['warning','question'], confidence:'high', sources:['sanity','rudin'],
@@ -102,12 +102,12 @@ export const evidence: Evidence[] = [
   {
     id:'E11', title:['Probabilidade, Bayes e incerteza','Probability, Bayes and uncertainty'], pages:'5–6, 21–22, 26', category:['observation','recommendation'], confidence:'high', sources:['vae','ensembles'],
     original:['O artigo já descreve redes em estruturas probabilísticas, inferência bayesiana e métodos de Monte Carlo, com seus custos.','The paper already describes networks within probabilistic frameworks, Bayesian inference and Monte Carlo methods, along with their costs.'],
-    outcome:['Modelos como VAEs e métodos como deep ensembles ampliaram a conexão entre redes, modelagem probabilística e estimativa de incerteza.','Models such as VAEs and methods such as deep ensembles expanded the connection between networks, probabilistic modeling and uncertainty estimation.'],
+    outcome:['Essa conexão aparece, por exemplo, nos autoencoders variacionais (VAEs), que usam uma descrição probabilística de representações internas, e nos deep ensembles, que combinam redes treinadas separadamente para produzir previsões e estimativas de incerteza.','Examples include variational autoencoders (VAEs), which use a probabilistic description of internal representations, and deep ensembles, which combine separately trained networks to produce predictions and uncertainty estimates.'],
     caveat:['Deep ensembles não são automaticamente inferência bayesiana exata. Aproximação e mudança de distribuição continuam afetando a confiança nas respostas.','Deep ensembles are not automatically exact Bayesian inference. Approximation and distribution shift still affect confidence in predictions.'],
   },
   {
     id:'E12', title:['Hopfield e física estatística','Hopfield and statistical physics'], pages:'22–24, 26', category:['observation'], confidence:'veryHigh', sources:['hopfield','nobel'],
-    original:['Energia, atratores, Gibbs e máquinas de Boltzmann conectavam redes à física. O artigo revisa trabalhos anteriores.','Energy, attractors, Gibbs distributions and Boltzmann machines connected networks to physics. The paper reviews earlier work.'],
+    original:['Ao discutir redes recorrentes, os autores descrevem estados estáveis para os quais a rede pode convergir, chamados atratores, e sua relação com funções de energia. Também apresentam distribuições de Gibbs e máquinas de Boltzmann, retomando trabalhos anteriores.','In discussing recurrent networks, the authors describe stable states toward which a network may converge, called attractors, and their relationship to energy functions. They also present Gibbs distributions and Boltzmann machines, drawing on earlier work.'],
     outcome:['Redes de Hopfield modernas foram relacionadas à atenção. O Nobel de Física de 2024 reconheceu trabalhos fundacionais de Hopfield e Hinton.','Modern Hopfield networks were related to attention. The 2024 Nobel Prize in Physics recognized foundational work by Hopfield and Hinton.'],
     caveat:['A ponte antecede 1994. Apresentá-la aos estatísticos não foi descobrir essa relação nem prever o Nobel.','The bridge predates 1994. Introducing it to statisticians was neither discovering the relationship nor predicting the Nobel Prize.'],
   },
@@ -125,7 +125,7 @@ export const evidence: Evidence[] = [
   },
   {
     id:'E15', title:['Muitas variáveis, poucos dados','Many variables, little data'], pages:'19, 21, 25–26', category:['warning'], confidence:'mediumHigh', sources:['alexnet','trees','tabpfn'],
-    original:['Teoremas podem exigir unidades ou amostras demais quando cresce o número de características. A viabilidade prática não vem de graça.','Theorems may require too many units or samples as the number of features grows. Practical feasibility does not come for free.'],
+    original:['Quando cresce o número de características, alguns resultados teóricos exigem quantidades de unidades ou de observações que tornam sua aplicação difícil. O artigo discute essa diferença entre o que é possível representar e o que é viável aprender.','As the number of features grows, some theoretical results require enough units or observations to make their application difficult. The paper discusses this difference between what can be represented and what can feasibly be learned.'],
     outcome:['Redes exploram estrutura e representações para trabalhar em alta dimensão. Resultados continuam dependendo do dado e das suposições da arquitetura.','Networks exploit structure and representations to work in high dimensions. Results still depend on the data and the architecture’s assumptions.'],
     caveat:['Explorar estrutura pode aliviar o problema. Não elimina limites estatísticos gerais nem garante sucesso com qualquer conjunto de muitas variáveis.','Exploiting structure can alleviate the problem. It does not eliminate general statistical limits or guarantee success on every many-variable dataset.'],
   },

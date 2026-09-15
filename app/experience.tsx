@@ -18,8 +18,8 @@ export function Experience({ locale: initialLocale }: { locale: 'pt' | 'en' }) {
       ? 'Em 1994, dois estatísticos tentaram prever o futuro das redes neurais'
       : 'In 1994, two statisticians tried to predict the future of neural networks';
     document.querySelector('meta[name="description"]')?.setAttribute('content', locale === 'pt'
-      ? 'Por dentro das redes neurais: contas, aprendizado, double descent e as perguntas de um artigo de 1994 que continuam importantes.'
-      : 'Inside neural networks: calculations, learning, double descent and the enduring questions of a paper from 1994.');
+      ? 'Uma leitura interativa sobre a relação entre estatística e redes neurais, a partir de um artigo de 1994.'
+      : 'An interactive reading of a 1994 paper exploring the relationship between statistics and neural networks.');
   }, [locale]);
   useLayoutEffect(() => {
     const anchor = readingPosition.current;
