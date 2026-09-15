@@ -1,4 +1,4 @@
-import { access, readFile, unlink } from 'node:fs/promises';
+import { access, copyFile, mkdir, readFile, unlink } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
@@ -11,6 +11,13 @@ const publication = await readFile(resolve(output, '../../app/publication.tsx'),
 assert.ok(!publication.includes('next/link'), 'Keep portfolio links native: the static RSC navigation failed in production');
 for (const file of ['index.html', 'pt.html', 'en.html', 'en/home.html', 'sobre.html', 'en/about.html']) {
   await access(resolve(output, file));
+}
+// Pages has no application server or rewrite rules. Directory entrypoints also
+// make /en/ work alongside /en/home/; retain flat exports for existing links.
+for (const route of ['pt', 'en', 'en/home', 'sobre', 'en/about']) {
+  const directory = resolve(output, route);
+  await mkdir(directory, { recursive: true });
+  await copyFile(resolve(output, route + '.html'), resolve(directory, 'index.html'));
 }
 for (const route of ['caderno', 'direcoes', 'identidades', 'inference']) {
   for (const extension of ['html', 'rsc']) {

@@ -5,4 +5,4 @@ Disallow: /direcoes
 Disallow: /identidades
 Disallow: /inference
 
-Sitemap: https://adriano-inference-notes.driano2012.chatgpt.site/sitemap.xml
+Sitemap: https://driano1221.github.io/sitemap.xml
