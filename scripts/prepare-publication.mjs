@@ -6,6 +6,9 @@ import assert from 'node:assert/strict';
 // Only generated preview entrypoints are removed. Their source and local routes
 // stay available for design work; a normal build regenerates the exported files.
 const output = resolve(dirname(fileURLToPath(import.meta.url)), '../dist/client');
+// Production static exports use document navigation, not Vinext's RSC Link.
+const publication = await readFile(resolve(output, '../../app/publication.tsx'), 'utf8');
+assert.ok(!publication.includes('next/link'), 'Keep portfolio links native: the static RSC navigation failed in production');
 for (const file of ['index.html', 'pt.html', 'en.html', 'en/home.html', 'sobre.html', 'en/about.html']) {
   await access(resolve(output, file));
 }
