@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /caderno
+Disallow: /direcoes
+Disallow: /identidades
+Disallow: /inference
+
+Sitemap: https://adriano-inference-notes.blithe-cake-9763.chatgpt.site/sitemap.xml

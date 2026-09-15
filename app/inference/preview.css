@@ -1,0 +1,55 @@
+.in-preview { --in-ink:#151e27; --in-muted:#687079; --in-green:#4f7061; --in-line:#e3e6e5; background:#f6f6f4; color:var(--in-ink); min-height:100vh; font-family:Georgia,'Times New Roman',serif; font-weight:400; }
+.in-preview [hidden] { display:none !important; }
+.in-preview a { color:inherit; text-decoration:none; }
+.in-preview a:hover { color:var(--in-green); }
+.in-preview :is(a,button):focus-visible { outline:2px solid var(--in-green); outline-offset:5px; }
+.in-preview :is(h1,h2,p) { margin:0; max-width:none; }
+.in-preview button { cursor:pointer; }
+.in-toolbar { max-width:1660px; margin:auto; padding:13px 28px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px 20px; color:#59615e; font:12px/1.5 var(--font-interface),sans-serif; }
+.in-toolbar>div { display:flex; gap:5px; flex-wrap:wrap; }
+.in-toolbar button { background:transparent; border:0; padding:6px 10px; color:inherit; font:inherit; }
+.in-toolbar button[aria-pressed=true] { color:#294c3a; text-decoration:underline; text-underline-offset:5px; }
+.in-lang { border-left:1px solid #d4d9d5; margin-left:8px; padding-left:8px; }
+.in-spread { max-width:1660px; padding:0 28px 28px; margin:auto; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; align-items:stretch; }
+.in-home { display:flex; flex-direction:column; }
+.in-home .in-footer { margin-top:auto; }
+.in-home .in-posts { margin-bottom:34px; }
+.in-paper { background:#fefefd; border:1px solid #dfe2e2; padding:30px clamp(28px,3.8vw,64px) 20px; min-width:0; }
+.in-header { display:flex; justify-content:space-between; align-items:flex-start; gap:20px; }
+.in-brand { font-size:32px; line-height:1.2; letter-spacing:-.65px; white-space:nowrap; }
+.in-tagline { margin-top:6px !important; font:9px/1.7 var(--font-interface),sans-serif; letter-spacing:1.35px; text-transform:uppercase; color:#59646c; }
+.in-header nav { display:flex; gap:20px; padding-top:13px; font:9px/1.5 var(--font-interface),sans-serif; letter-spacing:1.1px; text-transform:uppercase; }
+.in-intro { padding:72px 0 48px; }
+.in-intro h1 { font:400 36px/1.19 Georgia,serif; letter-spacing:-.9px; }
+.in-rule { width:46px; height:2px; background:#6d8b79; margin:25px 0; }
+.in-intro>p { font:11px/1.85 var(--font-interface),sans-serif; letter-spacing:1.3px; text-transform:uppercase; color:#616a71; }
+.in-posts { list-style:none; margin:0; padding:0; }
+.in-posts li { border-top:1px solid var(--in-line); }
+.in-posts li>a { display:grid; grid-template-columns:112px minmax(0,1fr) 15px; align-items:start; gap:16px; padding:20px 0; }
+.in-preview time { font:10px/1.7 var(--font-interface),sans-serif; color:#606b75; text-transform:uppercase; letter-spacing:1px; }
+.in-posts time { padding-top:6px; }
+.in-posts h2 { font:400 21px/1.28 Georgia,serif; letter-spacing:-.2px; }
+.in-posts p { font:14px/1.5 Georgia,serif; color:var(--in-muted); margin-top:4px; }
+.in-arrow { color:var(--in-green); padding-top:7px; }
+.in-footer { border-top:1px solid var(--in-line); margin-top:34px; padding-top:16px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; color:#687079; font:9px/1.5 var(--font-interface),sans-serif; letter-spacing:.15px; }
+.in-back { display:inline-block; color:var(--in-green) !important; margin:48px 0 31px; font:11px/1.5 Georgia,serif; letter-spacing:.7px; text-transform:uppercase; }
+.in-article-heading h1 { font:400 38px/1.14 Georgia,serif; letter-spacing:-.75px; margin:12px 0 11px; text-wrap:pretty; }
+.in-article-heading>p { font:20px/1.45 Georgia,serif; color:var(--in-muted); }
+.in-article-heading .in-rule { margin:24px 0 28px; }
+.in-prose { font:17px/1.5 Georgia,serif; color:#46515b; }
+.in-prose p { margin:0 0 19px; }
+.in-equation { position:relative; margin:0; padding:6px 27px 24px; text-align:center; color:#34424f; font-size:20px; white-space:nowrap; }
+.in-fraction { display:inline-flex; flex-direction:column; vertical-align:middle; text-align:center; margin-left:5px; font-style:italic; }
+.in-fraction>span:first-child { border-bottom:1px solid #53616c; padding:0 5px 2px; }
+.in-fraction>span:last-child { padding-top:2px; }
+.in-equation small { position:absolute; right:0; top:24px; font-size:12px; color:var(--in-muted); }
+.in-pagination { border-top:1px solid var(--in-line); padding-top:17px; margin-top:26px; display:flex; justify-content:space-between; gap:20px; font:10px/1.5 Georgia,serif; color:var(--in-green); text-transform:uppercase; letter-spacing:.4px; }
+.in-article .in-footer { margin-top:23px; }
+.in-project-link { font-size:16px; color:var(--in-green); margin:26px 0 !important; text-decoration:underline; text-underline-offset:4px; }
+.in-view-home,.in-view-article { display:block; max-width:910px; }
+.in-view-home .in-paper,.in-view-article .in-paper { padding:42px 64px 24px; }
+.in-view-article .in-prose { font-size:19px; line-height:1.65; }
+.in-view-article .in-article-heading h1 { font-size:44px; }
+@media(min-width:1001px) and (max-width:1430px) { .in-header { flex-direction:column; gap:8px; } .in-header nav { padding-top:0; } .in-intro { padding-top:55px; } .in-posts li>a { grid-template-columns:88px minmax(0,1fr) 12px; gap:12px; } }
+@media(max-width:1000px) { .in-spread { grid-template-columns:1fr; max-width:850px; gap:24px; } .in-paper { padding:36px 48px 24px; } }
+@media(max-width:600px) { .in-toolbar { padding:12px 16px; } .in-toolbar>span { width:100%; font-size:11px; } .in-toolbar button { padding:6px 8px; } .in-spread { padding:0 10px 12px; } .in-paper,.in-view-home .in-paper,.in-view-article .in-paper { padding:27px 23px 22px; } .in-header { flex-direction:column; gap:17px; } .in-brand { font-size:31px; } .in-tagline { font-size:8px; letter-spacing:1px; } .in-header nav { padding-top:0; gap:25px; } .in-intro { padding:49px 0 35px; } .in-intro h1 { font-size:32px; } .in-intro>p { font-size:9px; letter-spacing:1px; } .in-posts li>a { grid-template-columns:minmax(0,1fr) 16px; gap:6px 10px; padding:20px 0; } .in-posts time { grid-column:1/-1; padding-top:0; font-size:9px; } .in-posts h2 { font-size:21px; } .in-posts p { font-size:14px; } .in-back { margin:38px 0 27px; } .in-article-heading h1,.in-view-article .in-article-heading h1 { font-size:34px; } .in-article-heading>p { font-size:18px; } .in-prose,.in-view-article .in-prose { font-size:17px; line-height:1.6; } .in-equation { font-size:18px; padding-left:0; padding-right:15px; } .in-equation small { font-size:10px; } }
