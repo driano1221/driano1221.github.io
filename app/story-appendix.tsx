@@ -30,7 +30,7 @@ export function StoryAppendix({ locale }: { locale: 'pt' | 'en' }) {
           {evidence.map(item => <details className="evidence-entry" id={item.id.toLowerCase()} key={item.id}>
             <summary><span className="evidence-id">{item.id}</span><span className="evidence-title">{item.title[lang]}</span><span className="evidence-kind">{categories[item.category[0]][lang]}</span><span className="evidence-toggle" aria-hidden="true" /></summary>
             <div className="evidence-body">
-              <p className="evidence-meta">{t('Páginas impressas', 'Printed pages')} {item.pages} <span aria-hidden="true">·</span> {item.category.map(category => categories[category][lang]).join(' / ')}</p>
+              <p className="evidence-meta">{item.category.map(category => categories[category][lang]).join(' / ')}</p>
               <div className="evidence-comparison">
                 <div><h3>{t('O que estava em 1994', 'What was there in 1994')}</h3><p>{item.original[lang]}</p></div>
                 <div><h3>{t('O que veio depois', 'What followed')}</h3><p>{item.outcome[lang]}</p></div>

@@ -4,11 +4,11 @@
    3) UI flutuante: botão Aa, painel de exibição e barra de progresso/localização. */
 
 :root{
-  --k-bg:#f0f1ec;
-  --k-ink:#17170f;
-  --k-soft:#54554c;
-  --k-line:#c4c5bd;
-  --k-panel:#e4e5df;
+  --k-bg:#f7f4ea;
+  --k-ink:#211f16;
+  --k-soft:#5d5847;
+  --k-line:#d5cdb8;
+  --k-panel:#efe9da;
 }
 [data-ktheme='papel']{
   --k-bg:#ece3cd;
@@ -35,35 +35,41 @@
 .k-reader{min-height:100svh}
 
 /* ---- remapeamento do story por tema ---- */
-html:has(.publication-story){background:#f1f1ec}
-html[data-ktheme='papel']:has(.publication-story){background:#ece3cd}
-html[data-ktheme='medio']:has(.publication-story){background:#9c9d98}
-html[data-ktheme='preto']:has(.publication-story){background:#111312}
+html:has(.publication-story),
+html:has(.publication-story) body{background:#f7f4ea}
+html[data-ktheme='papel']:has(.publication-story),
+html[data-ktheme='papel']:has(.publication-story) body{background:#ece3cd}
+html[data-ktheme='medio']:has(.publication-story),
+html[data-ktheme='medio']:has(.publication-story) body{background:#9c9d98}
+html[data-ktheme='preto']:has(.publication-story),
+html[data-ktheme='preto']:has(.publication-story) body{background:#111312}
 
 html .publication-story.publication-story{
   --pub-font:var(--font-literata),Georgia,serif;
-  --pub-paper:#f1f1ec;
-  --pub-ink:#20211a;
-  --pub-muted:#54554c;
-  --pub-line:#c6c7bf;
-  --pub-link:#20211a;
+  --pub-paper:#f7f4ea;
+  --pub-ink:#211f16;
+  --pub-muted:#5d5847;
+  --pub-line:#d5cdb8;
+  --pub-link:#211f16;
+  --k-accent:#5a7d4a;
+  --k-accent-soft:#e4ebd5;
 }
 html[data-ktheme='papel'] .publication-story.publication-story{
-  --pub-paper:#ece3cd;--pub-ink:#2b2517;--pub-muted:#6b6250;--pub-line:#cfc4a6;--pub-link:#2b2517;
+  --pub-paper:#ece3cd;--pub-ink:#2b2517;--pub-muted:#6b6250;--pub-line:#cfc4a6;--pub-link:#2b2517;--k-accent:#6b7a3f;--k-accent-soft:#ddd9b6;
   --r-diagram-bg:#e2d8bf;
 }
 html[data-ktheme='medio'] .publication-story.publication-story{
-  --pub-paper:#9c9d98;--pub-ink:#1b1b18;--pub-muted:#3c3d38;--pub-line:#7f807b;--pub-link:#1b1b18;
+  --pub-paper:#9c9d98;--pub-ink:#1b1b18;--pub-muted:#3c3d38;--pub-line:#7f807b;--pub-link:#1b1b18;--k-accent:#46543a;--k-accent-soft:#a9ae9c;
   --r-diagram-bg:#90918c;
 }
 html[data-ktheme='preto'] .publication-story.publication-story{
-  --pub-paper:#111312;--pub-ink:#c7c8c0;--pub-muted:#8b8c85;--pub-line:#2c2e2c;--pub-link:#c7c8c0;
+  --pub-paper:#111312;--pub-ink:#c7c8c0;--pub-muted:#8b8c85;--pub-line:#2c2e2c;--pub-link:#c7c8c0;--k-accent:#9fbf8a;--k-accent-soft:#232b1d;
   --r-diagram-bg:#191b1a;--r-soft-a:#2a1d18;--r-soft-b:#182231;--r-a:#c9886b;--r-b:#8aa6c9;
 }
 
 /* literais definidos direto no .r-story pelo publication.css exigem override
    no mesmo elemento com especificidade maior */
-html[data-ktheme='branco'] .publication-story .r-story{--r-diagram-bg:#e9eae4}
+html[data-ktheme='branco'] .publication-story .r-story{--r-diagram-bg:#fbf9f2}
 html[data-ktheme='papel'] .publication-story .r-story{--r-diagram-bg:#e2d8bf}
 html[data-ktheme='medio'] .publication-story .r-story{--r-diagram-bg:#90918c}
 html[data-ktheme='preto'] .publication-story .r-story{
@@ -154,22 +160,6 @@ html .publication-story.publication-story .publication-header .publication-langu
    por contador, hero como folha de rosto, laboratórios de canto reto.
    ================================================================== */
 
-/* ---- contador de seções ---- */
-.k-reader .publication-story.publication-story{counter-reset:papersec}
-.k-reader .publication-story.publication-story
-  :is(.r-reading,.r-experiment,.r-ending,.story-section,.story-conclusion){counter-increment:papersec}
-
-.k-reader .publication-story.publication-story
-  :is(.r-reading,.r-experiment,.r-ending,.story-section,.story-conclusion)
-  :is(h2[id],.r-reading-main>h2,.r-demo-header h2,.story-prose>h2,.story-conclusion>h2)::before{
-  display:block;
-  margin:0 auto .55rem;
-  font-family:var(--font-inter),system-ui,Arial,sans-serif;
-  font-size:.66rem;font-weight:500;letter-spacing:.26em;
-  color:var(--pub-muted);
-  content:'§ ' counter(papersec,upper-roman);
-}
-
 /* ---- kickers de seção viram linha-versalete centrada ---- */
 .k-reader .publication-story.publication-story :is(.story-prose>.r-kicker,.r-demo-header .r-kicker,.r-ending .r-kicker){
   text-align:center;letter-spacing:.24em;
@@ -208,8 +198,8 @@ html .publication-story.publication-story .publication-header .publication-langu
   display:block;text-align:center;letter-spacing:.24em;
 }
 .k-reader .publication-story.publication-story .r-hero-copy h1{
-  margin:1rem auto 0;max-width:22ch;text-wrap:balance;
-  font-size:clamp(1.45rem,2.6vw,1.8rem);line-height:1.3;letter-spacing:0;
+  margin:1.1rem auto 0;max-width:26ch;text-wrap:balance;
+  font-size:clamp(1.95rem,3.9vw,2.75rem);line-height:1.18;letter-spacing:-.012em;
 }
 .k-reader .publication-story.publication-story .r-hero-copy .r-deck{
   margin:1.2rem auto 0;padding:1rem .25rem;
@@ -275,3 +265,37 @@ html .publication-story.publication-story .publication-header .publication-langu
 }
 /* caixas de operação do diagrama do máximo: cantos discretos */
 .k-reader .publication-story.publication-story .r-operation rect{rx:4px}
+
+/* ---- vida nos laboratórios: papel quadriculado de engenharia ---- */
+.k-reader .publication-story.publication-story :is(.story-lab,.r-experiment-body){
+  background-image:
+    linear-gradient(color-mix(in srgb,var(--pub-line) 46%,transparent) 1px,transparent 1px),
+    linear-gradient(90deg,color-mix(in srgb,var(--pub-line) 46%,transparent) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+/* controles vivos: acento verde-sálvia em estados ativos, sliders e dot ao vivo */
+html[data-ktheme] .story-lab button[aria-pressed='true'],
+html[data-ktheme] .story-check button[aria-pressed='true'],
+html[data-ktheme] .r-step-controls button[aria-pressed='true'],
+html[data-ktheme] .r-path-controls button[aria-pressed='true'],
+html[data-ktheme] .judgment-index button[aria-pressed='true'],
+html[data-ktheme] .learning-stages button[aria-pressed='true'],
+html[data-ktheme] .position-buttons button[aria-pressed='true'],
+html[data-ktheme] .answer-buttons button[aria-pressed='true']{
+  border-color:var(--k-accent);
+  background:var(--k-accent-soft);
+  color:var(--pub-ink);
+}
+.k-reader .publication-story.publication-story :is(.story-lab,.story-check) [data-slot='slider-range'],
+.k-reader .publication-story.publication-story :is(.story-lab,.story-check) [data-slot='slider-thumb'],
+.k-reader .publication-story.publication-story .r-live-dot{
+  background:var(--k-accent);
+}
+.k-reader .publication-story.publication-story .r-live-dot{
+  box-shadow:0 0 0 7px color-mix(in srgb,var(--k-accent) 12%,transparent);
+}
+.k-reader .publication-story.publication-story :is(.story-lab,.story-check) button:hover{
+  border-color:var(--k-accent);
+}
+/* fronteira de decisão e aprendizado herdam o acento */
+html[data-ktheme] .publication-story .r-story{--r-accent:var(--k-accent)}

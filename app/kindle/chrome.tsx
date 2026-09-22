@@ -55,7 +55,6 @@ export function KindleHeader({ locale, active, langHrefs }: {
 }) {
   const t = (pt: string, en: string) => (locale === 'pt' ? pt : en);
   const home = locale === 'pt' ? '/' : '/en/home';
-  const projects = `/${locale}`;
   const about = locale === 'pt' ? '/sobre' : '/en/about';
   const ptHref = langHrefs?.pt ?? '/';
   const enHref = langHrefs?.en ?? '/en/home';
@@ -68,7 +67,7 @@ export function KindleHeader({ locale, active, langHrefs }: {
       <nav className="k-nav" aria-label={t('Navegação principal', 'Main navigation')}>
         <a href={home} aria-current={active === 'home' ? 'page' : undefined}>{t('Início', 'Home')}</a>
         <a href={home}>{t('Blog', 'Blog')}</a>
-        <a href={projects} aria-current={active === 'projects' ? 'page' : undefined}>{t('Projetos', 'Projects')}</a>
+        <a href={home} aria-current={active === 'projects' ? 'page' : undefined}>{t('Projetos', 'Projects')}</a>
         <a href={about} aria-current={active === 'about' ? 'page' : undefined}>{t('Sobre', 'About')}</a>
       </nav>
       <div className="k-meta">

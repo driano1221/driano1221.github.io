@@ -2,11 +2,11 @@
    Temas Padrão/Papel/Médio/Preto via data-ktheme (tokens espelham o protótipo validado). */
 
 .k-home{
-  --k-bg:#f0f1ec;
-  --k-ink:#17170f;
-  --k-soft:#54554c;
-  --k-line:#c4c5bd;
-  --k-panel:#e4e5df;
+  --k-bg:#f7f4ea;
+  --k-ink:#211f16;
+  --k-soft:#5d5847;
+  --k-line:#d5cdb8;
+  --k-panel:#efe9da;
   min-height:100svh;
   display:flex;
   flex-direction:column;

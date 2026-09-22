@@ -7,7 +7,7 @@ import './kindle.css';
 
 export function KindleHome({ locale }: { locale: Locale }) {
   const t = (pt: string, en: string) => (locale === 'pt' ? pt : en);
-  const projects = `/${locale}`;
+  const post = `/${locale}`;
   const theme = useKindleTheme();
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export function KindleHome({ locale }: { locale: Locale }) {
         <h1 className="k-seclabel" id="blog-title">{t('Publicações', 'Blog')}</h1>
         <article className="k-post">
           <p className="k-post-date"><time dateTime="2026-09">{t('Setembro de 2026', 'September 2026')}</time></p>
-          <h2 className="k-post-title"><a href={projects}>{t('Redes neurais, vistas de 1994', 'Neural networks, seen from 1994')}</a></h2>
+          <h2 className="k-post-title"><a href={post}>{t('Redes neurais, vistas de 1994', 'Neural networks, seen from 1994')}</a></h2>
           <p className="k-post-desc">
             {t(
               'Uma leitura interativa sobre a relação entre estatística e redes neurais, a partir de um artigo de 1994.',

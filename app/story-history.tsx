@@ -63,7 +63,7 @@ export function StoryHistory({locale}:{locale:'pt'|'en'}) {
       <div className="judgment-reader">
         <nav className="judgment-index" aria-label={t('Perguntas do artigo','Questions from the paper')}>{judgments.map((item,i)=><button key={item.pages} aria-pressed={selected===i} onClick={()=>setSelected(i)}><span>0{i+1}</span>{item.label[lang]}</button>)}</nav>
         <article className="judgment-copy" aria-live="polite">
-          <p className="r-kicker">{t('No artigo','In the paper')} · p. {j.pages}</p><h3>{j.question[lang]}</h3><p>{j.original[lang]}</p>
+          <p className="r-kicker">{t('No artigo','In the paper')}</p><h3>{j.question[lang]}</h3><p>{j.original[lang]}</p>
           <div className="judgment-verdict"><span>{t('À luz do que veio depois','In light of what followed')}</span><h4>{j.verdict[lang]}</h4><p>{j.now[lang]}</p></div>
           <p className="judgment-limit">{j.limit[lang]}</p><div className="source-links"><a href="https://doi.org/10.1214/ss/1177010638" target="_blank" rel="noreferrer">{t('Artigo original','Original paper')} ↗</a>{j.evidence.map(([label,href])=><a key={href} href={href} target="_blank" rel="noreferrer">{label} ↗</a>)}</div>
         </article>

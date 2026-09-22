@@ -4,7 +4,7 @@ export type Theme = 'branco' | 'papel' | 'medio' | 'preto';
 export const STORAGE_KEY = 'kindle-theme';
 export const THEME_ORDER: Theme[] = ['branco', 'papel', 'medio', 'preto'];
 export const SWATCH_BG: Record<Theme, string> = {
-  branco: '#f0f1ec',
+  branco: '#f7f4ea',
   papel: '#ece3cd',
   medio: '#9c9d98',
   preto: '#111312',
