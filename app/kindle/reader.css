@@ -147,3 +147,131 @@ html .publication-story.publication-story .publication-header .publication-langu
 }
 .k-seg button + button{border-left:1px solid var(--k-ink)}
 .k-seg button[aria-pressed='true']{background:var(--k-ink);color:var(--k-bg)}
+
+/* ==================================================================
+   FORMATO C — paper em e-ink (aplicado via CSS; nenhum texto muda)
+   Justificado com hifenização, recuo de parágrafo, seções § numeradas
+   por contador, hero como folha de rosto, laboratórios de canto reto.
+   ================================================================== */
+
+/* ---- contador de seções ---- */
+.k-reader .publication-story.publication-story{counter-reset:papersec}
+.k-reader .publication-story.publication-story
+  :is(.r-reading,.r-experiment,.r-ending,.story-section,.story-conclusion){counter-increment:papersec}
+
+.k-reader .publication-story.publication-story
+  :is(.r-reading,.r-experiment,.r-ending,.story-section,.story-conclusion)
+  :is(h2[id],.r-reading-main>h2,.r-demo-header h2,.story-prose>h2,.story-conclusion>h2)::before{
+  display:block;
+  margin:0 auto .55rem;
+  font-family:var(--font-inter),system-ui,Arial,sans-serif;
+  font-size:.66rem;font-weight:500;letter-spacing:.26em;
+  color:var(--pub-muted);
+  content:'§ ' counter(papersec,upper-roman);
+}
+
+/* ---- kickers de seção viram linha-versalete centrada ---- */
+.k-reader .publication-story.publication-story :is(.story-prose>.r-kicker,.r-demo-header .r-kicker,.r-ending .r-kicker){
+  text-align:center;letter-spacing:.24em;
+}
+
+/* ---- títulos de seção centrados ---- */
+.k-reader .publication-story.publication-story :is(.story-prose>h2,.r-reading-main>h2,.r-demo-header h2,.story-conclusion>h2){
+  text-align:center;letter-spacing:0;
+}
+
+/* ---- corpo: justificado, hifenizado, com recuo de parágrafo ---- */
+.k-reader .publication-story.publication-story
+  :is(.story-prose,.r-reading-main,.r-ending,.publication-opening)>p:not(.r-kicker){
+  text-align:justify;
+  hyphens:auto;
+  -webkit-hyphens:auto;
+  text-indent:1.6em;
+  font-size:16.5px;
+  line-height:1.75;
+}
+.k-reader .publication-story.publication-story
+  :is(.story-prose,.r-reading-main,.r-ending,.publication-opening)>p:not(.r-kicker):first-of-type,
+.k-reader .publication-story.publication-story :is(h2,h3)+p{
+  text-indent:0;
+}
+/* parágrafos-ponte com link único não levam recuo */
+.k-reader .publication-story.publication-story .appendix-bridge>p,
+.k-reader .publication-story.publication-story .story-conclusion>a.r-source-link{
+  text-indent:0;
+}
+
+/* ---- hero como folha de rosto ---- */
+.k-reader .publication-story.publication-story .r-hero{max-width:640px}
+.k-reader .publication-story.publication-story .r-hero-copy{padding:2.4rem 0 0;text-align:center}
+.k-reader .publication-story.publication-story .r-hero-copy .r-kicker{
+  display:block;text-align:center;letter-spacing:.24em;
+}
+.k-reader .publication-story.publication-story .r-hero-copy h1{
+  margin:1rem auto 0;max-width:22ch;text-wrap:balance;
+  font-size:clamp(1.45rem,2.6vw,1.8rem);line-height:1.3;letter-spacing:0;
+}
+.k-reader .publication-story.publication-story .r-hero-copy .r-deck{
+  margin:1.2rem auto 0;padding:1rem .25rem;
+  border-top:1px solid var(--pub-ink);border-bottom:1px solid var(--pub-ink);
+  text-align:justify;hyphens:auto;-webkit-hyphens:auto;
+  font-size:15.5px;line-height:1.7;
+}
+.k-reader .publication-story.publication-story .r-hero-copy .r-source-link{
+  display:inline-block;margin-top:1.1rem;font-size:.78rem;letter-spacing:.08em;
+}
+.k-reader .publication-story.publication-story .r-paper{
+  margin:2rem auto 0;justify-content:center;
+}
+
+/* ---- laboratórios: canto reto e hairlines ---- */
+.k-reader .publication-story.publication-story :is(.story-lab,.story-check,.r-experiment,.judgment-reader,.memory-lab){
+  border-radius:0;
+}
+.k-reader .publication-story.publication-story .story-lab{
+  padding:2rem 2.25rem 1.5rem;
+}
+.k-reader .publication-story.publication-story .story-lab :is(h3,h4),
+.k-reader .publication-story.publication-story .story-check h3{
+  text-align:center;letter-spacing:0;
+}
+.k-reader .publication-story.publication-story :is(.story-lab,.story-check) button{
+  border-radius:0;padding:.55rem 1rem;
+}
+.k-reader .publication-story.publication-story .sample-inspector,
+.k-reader .publication-story.publication-story .story-toolbar button{border-radius:0}
+.k-reader .publication-story.publication-story figcaption{
+  text-align:center;letter-spacing:.02em;
+}
+
+/* ---- linha do tempo e rodapé do artigo ---- */
+.k-reader .publication-story.publication-story .history-bridge{
+  border-top:1px solid var(--pub-line);border-bottom:1px solid var(--pub-line);
+}
+.k-reader .publication-story.publication-story .r-footer{
+  text-align:center;justify-content:center;gap:.4rem;flex-direction:column;
+}
+
+@media (max-width:47.5rem){
+  .k-reader .publication-story.publication-story .story-lab{padding:1.5rem 1.1rem 1.25rem}
+  .k-reader .publication-story.publication-story
+    :is(.story-prose,.r-reading-main,.r-ending,.publication-opening)>p:not(.r-kicker){
+    text-align:left;text-indent:0;
+  }
+}
+
+/* botões do artigo todos de canto reto (demo, julgamentos, índices) */
+.k-reader .publication-story.publication-story .r-experiment button,
+.k-reader .publication-story.publication-story .r-step-controls button,
+.k-reader .publication-story.publication-story .r-input-actions button,
+.k-reader .publication-story.publication-story .r-path-controls button,
+.k-reader .publication-story.publication-story .judgment-index button,
+.k-reader .publication-story.publication-story .training-controls button,
+.k-reader .publication-story.publication-story .story-actions button{
+  border-radius:0;
+}
+.k-reader .publication-story.publication-story .r-step-controls button{
+  padding:.6rem .9rem;
+}
+/* caixas de operação do diagrama do máximo: cantos discretos */
+.k-reader .publication-story.publication-story .r-operation rect{rx:4px}
