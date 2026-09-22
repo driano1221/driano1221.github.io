@@ -70,10 +70,10 @@ html[data-ktheme='preto'] .publication-story.publication-story{
 
 /* literais definidos direto no .r-story pelo publication.css exigem override
    no mesmo elemento com especificidade maior */
-html[data-ktheme='branco'] .publication-story .r-story{--r-diagram-bg:#fbf9f2}
-html[data-ktheme='papel'] .publication-story .r-story{--r-diagram-bg:#e2d8bf}
-html[data-ktheme='medio'] .publication-story .r-story{--r-diagram-bg:#90918c}
-html[data-ktheme='preto'] .publication-story .r-story{--r-diagram-bg:#191b1a}
+html[data-ktheme='branco'] .publication-story .r-story{--r-diagram-bg:#fbf9f2;--r-a:#5a7d4a;--r-b:#b0563b;--r-soft-a:#e4ebd5;--r-soft-b:#f3e2d9}
+html[data-ktheme='papel'] .publication-story .r-story{--r-diagram-bg:#e2d8bf;--r-a:#6b7a3f;--r-b:#a8563a;--r-soft-a:#ddd9b6;--r-soft-b:#ecdcc8}
+html[data-ktheme='medio'] .publication-story .r-story{--r-diagram-bg:#90918c;--r-a:#46543a;--r-b:#7e3a26;--r-soft-a:#a9ae9c;--r-soft-b:#c2a894}
+html[data-ktheme='preto'] .publication-story .r-story{--r-diagram-bg:#191b1a;--r-a:#9fbf8a;--r-b:#e08a68;--r-soft-a:#232b1d;--r-soft-b:#38221a}
 
 /* estados pressionados usavam um verde fixo do tema antigo */
 html[data-ktheme] .story-lab button[aria-pressed='true'],
