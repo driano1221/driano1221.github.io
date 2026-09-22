@@ -53,18 +53,19 @@ html .publication-story.publication-story{
   --pub-link:#211f16;
   --k-accent:#5a7d4a;
   --k-accent-soft:#e4ebd5;
+  --r-a:#5a7d4a;--r-b:#b0563b;--r-soft-a:#e4ebd5;--r-soft-b:#f3e2d9;
 }
 html[data-ktheme='papel'] .publication-story.publication-story{
-  --pub-paper:#ece3cd;--pub-ink:#2b2517;--pub-muted:#6b6250;--pub-line:#cfc4a6;--pub-link:#2b2517;--k-accent:#6b7a3f;--k-accent-soft:#ddd9b6;
+  --pub-paper:#ece3cd;--pub-ink:#2b2517;--pub-muted:#6b6250;--pub-line:#cfc4a6;--pub-link:#2b2517;--k-accent:#6b7a3f;--k-accent-soft:#ddd9b6;--r-a:#6b7a3f;--r-b:#a8563a;--r-soft-a:#ddd9b6;--r-soft-b:#ecdcc8;
   --r-diagram-bg:#e2d8bf;
 }
 html[data-ktheme='medio'] .publication-story.publication-story{
-  --pub-paper:#9c9d98;--pub-ink:#1b1b18;--pub-muted:#3c3d38;--pub-line:#7f807b;--pub-link:#1b1b18;--k-accent:#46543a;--k-accent-soft:#a9ae9c;
+  --pub-paper:#9c9d98;--pub-ink:#1b1b18;--pub-muted:#3c3d38;--pub-line:#7f807b;--pub-link:#1b1b18;--k-accent:#46543a;--k-accent-soft:#a9ae9c;--r-a:#46543a;--r-b:#7e3a26;--r-soft-a:#a9ae9c;--r-soft-b:#c2a894;
   --r-diagram-bg:#90918c;
 }
 html[data-ktheme='preto'] .publication-story.publication-story{
   --pub-paper:#111312;--pub-ink:#c7c8c0;--pub-muted:#8b8c85;--pub-line:#2c2e2c;--pub-link:#c7c8c0;--k-accent:#9fbf8a;--k-accent-soft:#232b1d;
-  --r-diagram-bg:#191b1a;--r-soft-a:#2a1d18;--r-soft-b:#182231;--r-a:#c9886b;--r-b:#8aa6c9;
+  --r-diagram-bg:#191b1a;--r-a:#9fbf8a;--r-b:#e08a68;--r-soft-a:#232b1d;--r-soft-b:#38221a;
 }
 
 /* literais definidos direto no .r-story pelo publication.css exigem override
@@ -72,9 +73,7 @@ html[data-ktheme='preto'] .publication-story.publication-story{
 html[data-ktheme='branco'] .publication-story .r-story{--r-diagram-bg:#fbf9f2}
 html[data-ktheme='papel'] .publication-story .r-story{--r-diagram-bg:#e2d8bf}
 html[data-ktheme='medio'] .publication-story .r-story{--r-diagram-bg:#90918c}
-html[data-ktheme='preto'] .publication-story .r-story{
-  --r-diagram-bg:#191b1a;--r-soft-a:#2a1d18;--r-soft-b:#182231;--r-a:#c9886b;--r-b:#8aa6c9;
-}
+html[data-ktheme='preto'] .publication-story .r-story{--r-diagram-bg:#191b1a}
 
 /* estados pressionados usavam um verde fixo do tema antigo */
 html[data-ktheme] .story-lab button[aria-pressed='true'],
@@ -299,3 +298,9 @@ html[data-ktheme] .answer-buttons button[aria-pressed='true']{
 }
 /* fronteira de decisão e aprendizado herdam o acento */
 html[data-ktheme] .publication-story .r-story{--r-accent:var(--k-accent)}
+
+
+/* ---- sem título-duplo: kicker colado em título de seção desaparece ---- */
+.k-reader .publication-story.publication-story .r-kicker:has(+ :is(h2,h3)){
+  display:none;
+}
