@@ -147,17 +147,3 @@ html .publication-story.publication-story .publication-header .publication-langu
 }
 .k-seg button + button{border-left:1px solid var(--k-ink)}
 .k-seg button[aria-pressed='true']{background:var(--k-ink);color:var(--k-bg)}
-
-/* ---- barra de progresso/localização ---- */
-.k-progress{
-  position:fixed;left:0;right:0;bottom:0;z-index:60;
-  background:var(--k-panel);border-top:1px solid var(--k-line);
-}
-.k-progress .track{height:3px;background:var(--k-line)}
-.k-progress .fill{height:100%;background:var(--k-ink)}
-.k-progress .meta{
-  display:flex;justify-content:space-between;gap:1rem;
-  padding:.38rem .95rem .45rem;
-  font-family:var(--font-inter),system-ui,Arial,sans-serif;
-  font-size:.66rem;color:var(--k-soft);font-variant-numeric:tabular-nums;
-}

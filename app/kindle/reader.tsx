@@ -28,47 +28,11 @@ export function KindleReader({ locale, children }: { locale: Locale; children: R
   const theme = useKindleTheme();
   const zoom = useSyncExternalStore(subscribeZoom, getZoomSnapshot, getServerZoom);
   const [panelOpen, setPanelOpen] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [words, setWords] = useState(0);
 
   // tema escolhido vira atributo global: remapeia os tokens do artigo
   useEffect(() => {
     document.documentElement.dataset.ktheme = theme;
   }, [theme]);
-
-  // contagem de palavras do texto (para localização e minutos restantes)
-  useEffect(() => {
-    const raf = requestAnimationFrame(() => {
-      const story = document.querySelector('.publication-story');
-      if (story) setWords((story.textContent ?? '').trim().split(/\s+/).length);
-    });
-    return () => cancelAnimationFrame(raf);
-  }, []);
-
-  useEffect(() => {
-    let raf = 0;
-    const measure = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const doc = document.documentElement;
-        const max = doc.scrollHeight - window.innerHeight;
-        setProgress(max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0);
-      });
-    };
-    measure();
-    window.addEventListener('scroll', measure, { passive: true });
-    window.addEventListener('resize', measure);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener('scroll', measure);
-      window.removeEventListener('resize', measure);
-    };
-  }, []);
-
-  const locations = Math.max(1, Math.ceil(words / 25));
-  const location = Math.max(1, Math.ceil(locations * progress));
-  const minutes = Math.max(1, Math.ceil((words * (1 - progress)) / 220));
-  const pct = Math.round(progress * 100);
 
   return (
     <div className="k-reader" style={{ '--k-zoom': zoom } as CSSProperties}>
@@ -105,14 +69,6 @@ export function KindleReader({ locale, children }: { locale: Locale; children: R
       >
         Aa
       </button>
-
-      <div className="k-progress" aria-hidden="true">
-        <div className="track"><div className="fill" style={{ width: `${pct}%` }} /></div>
-        <div className="meta">
-          <span>{t('Localização', 'Location')} {location} {t('de', 'of')} {locations}</span>
-          <span>{pct}% · ~{minutes} {t('min restantes', 'min left')}</span>
-        </div>
-      </div>
     </div>
   );
 }
