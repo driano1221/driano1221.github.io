@@ -1,0 +1,163 @@
+/* Leitor Kindle — envolve o artigo (Experience) sem alterar seus componentes.
+   1) Tokens de e-ink globais (também usados pelo painel Aa e pela barra de progresso);
+   2) Remapeamento das variáveis do story (tokens pub e r) por tema;
+   3) UI flutuante: botão Aa, painel de exibição e barra de progresso/localização. */
+
+:root{
+  --k-bg:#f0f1ec;
+  --k-ink:#17170f;
+  --k-soft:#54554c;
+  --k-line:#c4c5bd;
+  --k-panel:#e4e5df;
+}
+[data-ktheme='papel']{
+  --k-bg:#ece3cd;
+  --k-ink:#2b2517;
+  --k-soft:#6b6250;
+  --k-line:#cfc4a6;
+  --k-panel:#e0d6bd;
+}
+[data-ktheme='medio']{
+  --k-bg:#9c9d98;
+  --k-ink:#1b1b18;
+  --k-soft:#3c3d38;
+  --k-line:#7f807b;
+  --k-panel:#8f908b;
+}
+[data-ktheme='preto']{
+  --k-bg:#111312;
+  --k-ink:#c7c8c0;
+  --k-soft:#8b8c85;
+  --k-line:#2c2e2c;
+  --k-panel:#191b1a;
+}
+
+.k-reader{min-height:100svh}
+
+/* ---- remapeamento do story por tema ---- */
+html:has(.publication-story){background:#f1f1ec}
+html[data-ktheme='papel']:has(.publication-story){background:#ece3cd}
+html[data-ktheme='medio']:has(.publication-story){background:#9c9d98}
+html[data-ktheme='preto']:has(.publication-story){background:#111312}
+
+html .publication-story.publication-story{
+  --pub-font:var(--font-literata),Georgia,serif;
+  --pub-paper:#f1f1ec;
+  --pub-ink:#20211a;
+  --pub-muted:#54554c;
+  --pub-line:#c6c7bf;
+  --pub-link:#20211a;
+}
+html[data-ktheme='papel'] .publication-story.publication-story{
+  --pub-paper:#ece3cd;--pub-ink:#2b2517;--pub-muted:#6b6250;--pub-line:#cfc4a6;--pub-link:#2b2517;
+  --r-diagram-bg:#e2d8bf;
+}
+html[data-ktheme='medio'] .publication-story.publication-story{
+  --pub-paper:#9c9d98;--pub-ink:#1b1b18;--pub-muted:#3c3d38;--pub-line:#7f807b;--pub-link:#1b1b18;
+  --r-diagram-bg:#90918c;
+}
+html[data-ktheme='preto'] .publication-story.publication-story{
+  --pub-paper:#111312;--pub-ink:#c7c8c0;--pub-muted:#8b8c85;--pub-line:#2c2e2c;--pub-link:#c7c8c0;
+  --r-diagram-bg:#191b1a;--r-soft-a:#2a1d18;--r-soft-b:#182231;--r-a:#c9886b;--r-b:#8aa6c9;
+}
+
+/* literais definidos direto no .r-story pelo publication.css exigem override
+   no mesmo elemento com especificidade maior */
+html[data-ktheme='branco'] .publication-story .r-story{--r-diagram-bg:#e9eae4}
+html[data-ktheme='papel'] .publication-story .r-story{--r-diagram-bg:#e2d8bf}
+html[data-ktheme='medio'] .publication-story .r-story{--r-diagram-bg:#90918c}
+html[data-ktheme='preto'] .publication-story .r-story{
+  --r-diagram-bg:#191b1a;--r-soft-a:#2a1d18;--r-soft-b:#182231;--r-a:#c9886b;--r-b:#8aa6c9;
+}
+
+/* estados pressionados usavam um verde fixo do tema antigo */
+html[data-ktheme] .story-lab button[aria-pressed='true'],
+html[data-ktheme] .story-check button[aria-pressed='true']{background:var(--pub-line)}
+
+.k-reader{min-height:100svh;padding-bottom:2.7rem}
+.k-reader .publication-story{zoom:var(--k-zoom, 1)}
+
+/* ---- story-nav do artigo alinhada ao cabeçalho Kindle da home ---- */
+html .publication-story.publication-story .publication-header.story-nav{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem 1.25rem;
+  max-width:none;margin:0;
+  padding:.85rem clamp(1rem,3.5vw,1.6rem);
+  border-bottom:1px solid var(--pub-line);
+  background:var(--pub-paper);
+}
+html .publication-story.publication-story .publication-header .publication-brand{
+  font-family:var(--font-inter),system-ui,Arial,sans-serif;
+  font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--pub-ink);text-decoration:none;white-space:nowrap;
+}
+html .publication-story.publication-story .publication-header nav{
+  display:flex;flex-wrap:wrap;align-items:center;gap:clamp(1.1rem,2.6vw,2.1rem);
+  margin-top:0;
+  font-family:var(--font-inter),system-ui,Arial,sans-serif;
+}
+html .publication-story.publication-story .publication-header nav>a{
+  color:var(--pub-muted);font-size:.8rem;font-weight:500;letter-spacing:.04em;
+  text-decoration:none;transition:color 140ms ease;
+}
+html .publication-story.publication-story .publication-header nav>a:hover{color:var(--pub-ink)}
+html .publication-story.publication-story .publication-header nav>a[aria-current='page']{
+  color:var(--pub-ink);border-bottom:2px solid var(--pub-ink);padding-bottom:.15rem;
+}
+html .publication-story.publication-story .publication-header .publication-languages :is(a,button){
+  font-family:var(--font-inter),system-ui,Arial,sans-serif;font-size:.78rem;
+}
+
+/* ---- botão Aa flutuante ---- */
+.k-aa-fab{
+  position:fixed;right:1.1rem;bottom:3rem;z-index:70;
+  width:2.9rem;height:2.9rem;display:flex;align-items:center;justify-content:center;
+  border:1.5px solid var(--k-ink);border-radius:50%;
+  background:var(--k-panel);color:var(--k-ink);
+  font-family:var(--font-literata),Georgia,serif;font-weight:600;font-size:.95rem;
+  cursor:pointer;box-shadow:0 6px 18px rgb(0 0 0 / 22%);
+}
+.k-aa-fab:hover{box-shadow:0 8px 22px rgb(0 0 0 / 30%)}
+.k-aa-fab:focus-visible{outline:2px solid var(--k-ink);outline-offset:3px}
+
+/* ---- painel de exibição ---- */
+.k-aa-panel{
+  position:fixed;right:1.1rem;bottom:6.3rem;z-index:71;width:min(20rem,92vw);
+  margin:0;
+  background:var(--k-panel);border:1px solid var(--k-ink);
+  box-shadow:0 14px 34px rgb(0 0 0 / 30%);
+  padding:.85rem 1rem 1rem;
+}
+.k-aa-panel h2{
+  display:flex;align-items:center;justify-content:space-between;
+  margin:0 0 .55rem;
+  font-family:var(--font-inter),system-ui,Arial,sans-serif;
+  font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--k-soft);
+}
+.k-aa-panel h2 button{border:0;background:none;color:inherit;font-size:.85rem;cursor:pointer}
+.k-aa-row{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:.55rem 0;border-top:1px solid var(--k-line);
+}
+.k-aa-lab{font-family:var(--font-inter),system-ui,Arial,sans-serif;font-size:.75rem;font-weight:500;color:var(--k-ink)}
+.k-seg{display:flex;border:1px solid var(--k-ink)}
+.k-seg button{
+  border:0;background:transparent;color:var(--k-ink);
+  font-family:var(--font-literata),Georgia,serif;font-size:.78rem;
+  padding:.4rem .65rem;cursor:pointer;
+}
+.k-seg button + button{border-left:1px solid var(--k-ink)}
+.k-seg button[aria-pressed='true']{background:var(--k-ink);color:var(--k-bg)}
+
+/* ---- barra de progresso/localização ---- */
+.k-progress{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  background:var(--k-panel);border-top:1px solid var(--k-line);
+}
+.k-progress .track{height:3px;background:var(--k-line)}
+.k-progress .fill{height:100%;background:var(--k-ink)}
+.k-progress .meta{
+  display:flex;justify-content:space-between;gap:1rem;
+  padding:.38rem .95rem .45rem;
+  font-family:var(--font-inter),system-ui,Arial,sans-serif;
+  font-size:.66rem;color:var(--k-soft);font-variant-numeric:tabular-nums;
+}

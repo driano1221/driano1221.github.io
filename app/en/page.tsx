@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Experience } from '../experience';
+import { KindleReader } from '../kindle/reader';
 
 export const metadata: Metadata = {
   title: 'In 1994, two statisticians tried to predict the future of neural networks',
@@ -8,5 +9,9 @@ export const metadata: Metadata = {
 };
 
 export default function EnglishExperience() {
-  return <Experience locale="en" />;
+  return (
+    <KindleReader locale="en">
+      <Experience locale="en" />
+    </KindleReader>
+  );
 }
