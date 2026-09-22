@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { PublicationHome } from '../../publication';
+import { KindleHome } from '../../kindle/home';
 
 export const metadata: Metadata = {
   title: 'Adriano Pires Cunha',
@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function EnglishHome() {
-  return <PublicationHome locale="en" />;
+  return <KindleHome locale="en" />;
 }

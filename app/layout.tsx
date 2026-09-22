@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { IBM_Plex_Mono, IBM_Plex_Sans, Newsreader } from 'next/font/google';
+import { IBM_Plex_Mono, IBM_Plex_Sans, Inter, Literata, Newsreader } from 'next/font/google';
 import './globals.css';
 
 const editorial = Newsreader({
@@ -22,6 +22,18 @@ const dataFont = IBM_Plex_Mono({
   display: 'swap',
 });
 
+const literata = Literata({
+  variable: '--font-literata',
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+const inter = Inter({
+  variable: '--font-inter',
+  subsets: ['latin'],
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   title: 'Adriano Pires Cunha',
   description:
@@ -36,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${editorial.variable} ${interfaceFont.variable} ${dataFont.variable}`}
+        className={`${editorial.variable} ${interfaceFont.variable} ${dataFont.variable} ${literata.variable} ${inter.variable}`}
       >
         {children}
       </body>
