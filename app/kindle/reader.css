@@ -75,9 +75,28 @@ html[data-ktheme='papel'] .publication-story .r-story{--r-diagram-bg:#e2d8bf;--r
 html[data-ktheme='medio'] .publication-story .r-story{--r-diagram-bg:#90918c;--r-a:#46543a;--r-b:#7e3a26;--r-soft-a:#a9ae9c;--r-soft-b:#c2a894}
 html[data-ktheme='preto'] .publication-story .r-story{--r-diagram-bg:#191b1a;--r-a:#9fbf8a;--r-b:#e08a68;--r-soft-a:#232b1d;--r-soft-b:#38221a}
 
+.k-reader .publication-story.publication-story .r-operation > rect:first-child{
+  fill:color-mix(in srgb,var(--k-panel) 88%,var(--pub-ink));stroke:var(--pub-line);
+}
+.k-reader .publication-story.publication-story .r-operation rect.r-label-mask{
+  fill:var(--r-diagram-bg);stroke:none;
+}
+.k-reader .publication-story.publication-story .r-result-node circle{
+  fill:var(--k-accent-soft);stroke:var(--k-accent);
+}
+.k-reader .publication-story.publication-story :is(.sample-inspector,.descent-readout,.prediction-pause,.evidence-body .evidence-caveat){
+  background:var(--k-panel);
+}
+.k-reader .publication-story.publication-story .pixel-grid :is(span,button):not(.on){
+  background:var(--pub-line);
+}
+
 /* estados pressionados usavam um verde fixo do tema antigo */
 html[data-ktheme] .story-lab button[aria-pressed='true'],
 html[data-ktheme] .story-check button[aria-pressed='true']{background:var(--pub-line)}
+.k-reader .publication-story.publication-story :is(.story-toolbar button,.story-lab button:not(.pixel-grid button),.story-check button)[aria-pressed='true']{
+  background:var(--k-accent-soft);color:var(--pub-ink);
+}
 
 .k-reader{min-height:100svh;padding-bottom:2.7rem}
 .k-reader .publication-story{zoom:var(--k-zoom, 1)}
@@ -127,7 +146,7 @@ html .publication-story.publication-story .publication-header .publication-langu
 /* ---- painel de exibição ---- */
 .k-aa-panel{
   position:fixed;right:1.1rem;bottom:6.3rem;z-index:71;width:min(20rem,92vw);
-  margin:0;
+  left:auto;margin:0;box-sizing:border-box;
   background:var(--k-panel);border:1px solid var(--k-ink);
   box-shadow:0 14px 34px rgb(0 0 0 / 30%);
   padding:.85rem 1rem 1rem;
@@ -227,6 +246,9 @@ html .publication-story.publication-story .publication-header .publication-langu
 .k-reader .publication-story.publication-story :is(.story-lab,.story-check) button{
   border-radius:0;padding:.55rem 1rem;
 }
+.k-reader .publication-story.publication-story .pixel-grid button{
+  min-width:0;min-height:0;width:100%;padding:0;aspect-ratio:1;
+}
 .k-reader .publication-story.publication-story .sample-inspector,
 .k-reader .publication-story.publication-story .story-toolbar button{border-radius:0}
 .k-reader .publication-story.publication-story figcaption{
@@ -247,6 +269,10 @@ html .publication-story.publication-story .publication-header .publication-langu
     :is(.story-prose,.r-reading-main,.r-ending,.publication-opening)>p:not(.r-kicker){
     text-align:left;text-indent:0;
   }
+}
+@media (max-width:30rem){
+  .k-reader .publication-story.publication-story .r-step-controls{flex-direction:column;gap:.2rem}
+  .k-reader .publication-story.publication-story .r-step-controls button{width:100%;text-align:left}
 }
 
 /* botões do artigo todos de canto reto (demo, julgamentos, índices) */
@@ -295,6 +321,9 @@ html[data-ktheme] .answer-buttons button[aria-pressed='true']{
 }
 .k-reader .publication-story.publication-story :is(.story-lab,.story-check) button:hover{
   border-color:var(--k-accent);
+}
+.k-reader .publication-story.publication-story .story-lab .pixel-grid button.on{
+  background:var(--r-accent);
 }
 /* fronteira de decisão e aprendizado herdam o acento */
 html[data-ktheme] .publication-story .r-story{--r-accent:var(--k-accent)}

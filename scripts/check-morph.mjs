@@ -8,6 +8,7 @@ import {
   trainFisher,
   trainPerceptron,
 } from '../lib/learning.mjs';
+import { damage, memory, recover } from '../lib/hopfield.mjs';
 
 assert.equal(getMorphStage(0), 0);
 assert.equal(getMorphStage(50), 1);
@@ -32,4 +33,13 @@ for (const position of [0, 1, 2]) {
   assert.equal(decisionSegment(perceptron).length, 2);
 }
 
-console.log('Act 1 transformations and learning routes are consistent.');
+for (const count of [8, 16]) {
+  const input = damage(count);
+  assert.equal(input.filter((pixel, index) => pixel !== memory[index]).length, count);
+  const frames = recover(input);
+  assert.deepEqual(frames.at(-1).state, memory);
+  assert.ok(frames.every((frame, index) => index === 0 || frame.energy <= frames[index - 1].energy + 1e-9));
+}
+assert.equal(damage(16).filter(pixel => pixel > 0).length, memory.filter(pixel => pixel > 0).length);
+
+console.log('Interactive calculations and Hopfield recovery are consistent.');

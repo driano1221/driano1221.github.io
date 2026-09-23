@@ -2,7 +2,9 @@
 
 import { useEffect, useState, useSyncExternalStore, type CSSProperties } from 'react';
 import { ThemeSwatches, useKindleTheme } from './chrome';
+import { Experience } from '../experience';
 import type { Locale } from './theme';
+import './kindle.css';
 import './reader.css';
 
 const ZOOM_KEY = 'kindle-zoom';
@@ -23,8 +25,9 @@ function setStoredZoom(value: number) {
   zoomListeners.forEach(listener => listener());
 }
 
-export function KindleReader({ locale, children }: { locale: Locale; children: React.ReactNode }) {
-  const t = (pt: string, en: string) => (locale === 'pt' ? pt : en);
+export function KindleReader({ locale }: { locale: Locale }) {
+  const [readerLocale, setReaderLocale] = useState(locale);
+  const t = (pt: string, en: string) => (readerLocale === 'pt' ? pt : en);
   const theme = useKindleTheme();
   const zoom = useSyncExternalStore(subscribeZoom, getZoomSnapshot, getServerZoom);
   const [panelOpen, setPanelOpen] = useState(false);
@@ -36,7 +39,7 @@ export function KindleReader({ locale, children }: { locale: Locale; children: R
 
   return (
     <div className="k-reader" style={{ '--k-zoom': zoom } as CSSProperties}>
-      {children}
+      <Experience locale={locale} onLocaleChange={setReaderLocale} />
 
       {panelOpen && (
         <dialog className="k-aa-panel" open aria-label={t('Configurações de exibição', 'Display settings')}>
@@ -46,7 +49,7 @@ export function KindleReader({ locale, children }: { locale: Locale; children: R
           </h2>
           <div className="k-aa-row">
             <span className="k-aa-lab">{t('Tema', 'Theme')}</span>
-            <ThemeSwatches locale={locale} theme={theme} />
+            <ThemeSwatches locale={readerLocale} theme={theme} />
           </div>
           <div className="k-aa-row">
             <span className="k-aa-lab">{t('Tamanho', 'Size')}</span>

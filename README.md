@@ -3,7 +3,7 @@
 Adriano's bilingual blog on statistics and AI, with interactive explanations
 of Cheng & Titterington's 1994 paper on neural networks.
 
-**Website:** https://driano1221.github.io/
+**Planned public address:** https://driano1221.github.io/ (the `kindle-ui` branch is not published there).
 
 ## Run locally
 
@@ -25,6 +25,11 @@ pnpm run check:morph
 pnpm run build
 ```
 
+For the static-export smoke check, serve `dist/client` locally and run
+`PUBLICATION_CHECK_ORIGIN=<local URL> node scripts/check-publication.mjs`.
+The full-repository lint currently also reports issues in unused scaffolded
+`components/ui` and `hooks`; lint the modified app files separately.
+
 Pushing `main` runs `.github/workflows/pages.yml`: install the locked dependencies,
 check types and calculations, export the six public pages to `dist/client`, then
 publish that folder through GitHub Pages. No personal access token or paid
@@ -44,7 +49,9 @@ For example: home → article → equal inputs → switch language → About →
 
 ## How it fits together
 
-- `app/publication.tsx` and `app/publication.css`: home, About and shared identity.
+- `app/kindle/home.tsx`, `about.tsx` and `chrome.tsx`: home, About, navigation and themes.
+- `app/kindle/reader.tsx` and `reader.css`: article reader, display settings and theme overrides.
+- `app/publication.tsx` and `app/publication.css`: article header and base publication styles.
 - `app/experience.tsx` and `app/story-*.tsx`: article and interactive explanations.
 - `lib/`: calculations, learning rules and evidence references.
 - `scripts/prepare-publication.mjs`: validates the export, adds directory

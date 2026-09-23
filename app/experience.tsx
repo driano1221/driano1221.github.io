@@ -10,7 +10,7 @@ import './direcoes/review.css';
 import './story.css';
 import './publication.css';
 
-export function Experience({ locale: initialLocale }: { locale: 'pt' | 'en' }) {
+export function Experience({ locale: initialLocale, onLocaleChange }: { locale: 'pt' | 'en'; onLocaleChange?: (locale: 'pt' | 'en') => void }) {
   const [locale, setLocale] = useState(initialLocale);
   const readingPosition = useRef<{ element: Element; top: number } | null>(null);
   useEffect(() => {
@@ -35,6 +35,7 @@ export function Experience({ locale: initialLocale }: { locale: 'pt' | 'en' }) {
     // Keep the same mounted components: changing language must not restart an experiment.
     window.history.replaceState(window.history.state, '', `/${next}${window.location.search}${window.location.hash}`);
     setLocale(next);
+    onLocaleChange?.(next);
   }
   function followSection(event: MouseEvent<HTMLDivElement>) {
     if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;

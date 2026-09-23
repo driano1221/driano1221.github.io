@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Experience } from '../experience';
 import { KindleReader } from '../kindle/reader';
 
 export const metadata: Metadata = {
@@ -9,9 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function EnglishExperience() {
-  return (
-    <KindleReader locale="en">
-      <Experience locale="en" />
-    </KindleReader>
-  );
+  return <KindleReader locale="en" />;
 }
