@@ -44,4 +44,13 @@ for (const [path, title, translation] of [
   assert.ok(html.includes('https://rpubs.com/driano12'), `${path}: RPubs from personal vault`);
   assert.ok(html.includes(`href="${translation}"`), `${path}: translate current page`);
 }
+for (const [path, translation, home] of [['/oceano', '/en/ocean', '/'], ['/en/ocean', '/oceano', '/en/home']]) {
+  const response = await fetch(new URL(path, origin));
+  assert.equal(response.status, 200, path);
+  const html = await response.text();
+  assert.ok(html.includes('id="post"'), `${path}: ocean post`);
+  assert.ok(html.includes('/posts/oceano-2026/01_espaguete.png'), `${path}: main chart`);
+  assert.ok(html.includes(`href="${translation}"`), `${path}: translate current post`);
+  assert.ok(html.includes(`href="${home}"`), `${path}: back to localized home`);
+}
 console.log('Publication: localized homes, dedicated about pages, experiments and 17 evidence entries passed.');

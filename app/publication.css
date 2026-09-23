@@ -28,6 +28,12 @@ html:has(.publication-home,.publication-story),body:has(.publication-home,.publi
 .publication-posts p { line-height:1.75; }
 .publication-post-kind { display:block; margin-top:12px; color:var(--pub-muted); font-size:14px; }
 .publication-about p { margin:18px 0; }
+.publication-post h1 { font:400 28px/1.35 var(--pub-font); margin:0 0 26px; text-wrap:pretty; }
+.publication-post p { margin:18px 0; }
+.publication-post figure { margin:34px 0; }
+.publication-post :is(img,video) { display:block; width:100%; height:auto; border:1px solid var(--pub-line); }
+.publication-post figcaption { margin-top:10px; color:var(--pub-muted); font-size:14px; line-height:1.65; }
+.publication-post .publication-post-sources { margin-top:40px; color:var(--pub-muted); font-size:14px; line-height:1.7; }
 .publication-socials { display:flex; flex-wrap:wrap; gap:24px; margin-top:28px; font-size:15px; }
 .publication-footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:56px; color:var(--pub-muted); font-size:13px; }
 .publication-skip { position:absolute; left:20px; top:-100px; z-index:50; background:white; padding:12px; }
