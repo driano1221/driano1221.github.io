@@ -74,6 +74,6 @@ export function KindleProjects({ locale }: { locale: Locale }) {
         </span>)}</p>
       </article>)}
     </main>
-    <KindleFooter locale={locale} theme={theme}/>
+    <KindleFooter />
   </div>;
 }

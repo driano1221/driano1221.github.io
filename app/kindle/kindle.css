@@ -1,5 +1,5 @@
 /* Kindle UI — tela inicial em e-ink. Escopo: wrapper .k-home.
-   Temas Padrão/Papel/Médio/Preto via data-ktheme (tokens espelham o protótipo validado). */
+   Tema único (Padrão): o fundo dos gráficos dos posts é feito para este papel. */
 
 .k-home{
   --k-bg:#f7f4ea;
@@ -17,27 +17,6 @@
     repeating-linear-gradient(0deg, rgb(0 0 0 / 1.6%) 0 1px, transparent 1px 2px),
     repeating-linear-gradient(90deg, rgb(0 0 0 / 1.2%) 0 1px, transparent 1px 3px);
   transition:background 180ms ease, color 180ms ease;
-}
-.k-home[data-ktheme='papel']{
-  --k-bg:#ece3cd;
-  --k-ink:#2b2517;
-  --k-soft:#6b6250;
-  --k-line:#cfc4a6;
-  --k-panel:#e0d6bd;
-}
-.k-home[data-ktheme='medio']{
-  --k-bg:#9c9d98;
-  --k-ink:#1b1b18;
-  --k-soft:#3c3d38;
-  --k-line:#7f807b;
-  --k-panel:#8f908b;
-}
-.k-home[data-ktheme='preto']{
-  --k-bg:#111312;
-  --k-ink:#c7c8c0;
-  --k-soft:#8b8c85;
-  --k-line:#2c2e2c;
-  --k-panel:#191b1a;
 }
 
 .k-home a{color:inherit}
@@ -159,9 +138,16 @@
 .k-article .k-post-date{margin-bottom:.2rem}
 .k-article figure{margin:1.8rem 0}
 .k-article img{display:block;width:100%;height:auto}
-/* fundo branco dos gráficos assume a cor do papel; no tema escuro só atenua o brilho */
-.k-home:not([data-ktheme='preto']) .k-article img{mix-blend-mode:multiply}
-.k-home[data-ktheme='preto'] .k-article img{filter:brightness(.82)}
+/* fundo branco dos gráficos assume a cor do papel */
+.k-article img{mix-blend-mode:multiply}
+/* link no meio do texto: sublinhado sempre visível, senão o leitor nem percebe que é clicável */
+:is(.k-article p:not(.k-post-date),.k-about-p) a{
+  color:var(--k-ink);font-weight:500;
+  text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.22em;
+  text-decoration-color:color-mix(in srgb,var(--k-ink) 55%,transparent);
+}
+:is(.k-article p:not(.k-post-date),.k-about-p) a:hover{text-decoration-thickness:2px;text-decoration-color:var(--k-ink)}
+:is(.k-article p,.k-about-p) a:focus-visible{outline:2px solid var(--k-ink);outline-offset:2px}
 .k-article figcaption{margin-top:.55rem;font-size:.78rem;line-height:1.6;color:var(--k-soft)}
 .k-article .k-article-deck{margin:0 0 1.6rem;font-size:1rem;line-height:1.7;color:var(--k-soft)}
 /* números em destaque: tipografia só, na linha do tema */
@@ -182,22 +168,6 @@
   margin-left:calc((100% - min(64rem,calc(100vw - 2rem))) / 2);
 }
 .k-article figure.k-wide figcaption{max-width:42rem;margin-inline:auto;padding-inline:1.25rem}
-/* home: abertura curta, projetos com imagem e lista do blog, numa coluna um pouco mais larga */
-.k-main.k-landing{width:min(52rem,100%)}
-.k-intro{padding-bottom:1.6rem;margin-bottom:1.8rem;border-bottom:1px solid var(--k-line)}
-.k-intro .k-about-title{margin:.2rem 0 .5rem;max-width:none}   /* h1 global do site limita a largura */
-.k-intro .k-about-p{max-width:40rem;font-size:1rem}
-.k-intro-links{margin:1rem 0 0;font-size:.85rem}
-.k-intro-links a{color:var(--k-ink);text-underline-offset:.22em}
-.k-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem;margin:.6rem 0 2.4rem}
-.k-card{display:flex;flex-direction:column;gap:.45rem;text-decoration:none;color:var(--k-ink)}
-.k-card img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:top}
-.k-card-title{font-family:var(--font-literata),Georgia,serif;font-size:1.12rem;font-weight:500;line-height:1.3;margin-top:.3rem}
-.k-card:hover .k-card-title{text-decoration:underline;text-underline-offset:.2em}
-.k-card-text{font-size:.82rem;line-height:1.55;color:var(--k-soft)}
-.k-card:focus-visible{outline:2px solid var(--k-ink);outline-offset:4px}
-@media (max-width:40rem){ .k-cards{grid-template-columns:1fr} }
-.k-home[data-ktheme='preto'] :is(.k-card img,.k-project img){filter:brightness(.82)}
 /* página de projetos */
 .k-project{padding:1.6rem 0 1.2rem;border-top:1px solid var(--k-line)}
 .k-project .k-post-title{margin-top:0}
@@ -207,18 +177,13 @@
 .k-article .k-article-sources a,.k-article-back a{color:var(--k-ink);text-underline-offset:.22em}
 .k-article .k-article-back{margin-top:1.4rem;font-size:.82rem}
 
-/* rodapé com seletor de tema */
+/* rodapé */
 .k-footer{
   display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.7rem 1.4rem;
   padding:.8rem clamp(.9rem,3vw,1.4rem);
   border-top:1px solid var(--k-line);
   font-size:.7rem;color:var(--k-soft);
 }
-.k-themes{display:inline-flex;align-items:center;gap:.5rem}
-.k-themes-wrap{display:inline-flex;align-items:center;gap:.6rem}
-.k-swatch{width:1.45rem;height:1.05rem;padding:0;border:1px solid var(--k-soft);cursor:pointer}
-.k-swatch[aria-pressed='true']{outline:2px solid var(--k-ink);outline-offset:1.5px}
-.k-swatch:focus-visible{outline:2px solid var(--k-ink);outline-offset:2.5px}
 
 @media (prefers-reduced-motion:reduce){
   .k-home,.k-home *{transition:none!important}

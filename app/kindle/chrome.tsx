@@ -1,10 +1,7 @@
 'use client';
 
-import { useEffect, useState, useSyncExternalStore } from 'react';
-import {
-  SWATCH_BG, THEME_ORDER, getServerTheme, getThemeSnapshot, setStoredTheme, subscribeTheme, themeLabel,
-  type Locale, type Theme,
-} from './theme';
+import { useEffect, useState } from 'react';
+import type { Locale, Theme } from './theme';
 
 export function IconHome() {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5" /><path d="M5.5 10v9h13v-9" /></svg>;
@@ -14,7 +11,7 @@ export function IconWifi() {
 }
 
 export function useKindleTheme(): Theme {
-  return useSyncExternalStore(subscribeTheme, getThemeSnapshot, getServerTheme);
+  return 'branco';
 }
 
 export function KindleClock({ locale }: { locale: Locale }) {
@@ -27,24 +24,6 @@ export function KindleClock({ locale }: { locale: Locale }) {
     return () => clearInterval(id);
   }, [locale]);
   return <span suppressHydrationWarning>{clock}</span>;
-}
-
-export function ThemeSwatches({ locale, theme }: { locale: Locale; theme: Theme }) {
-  return (
-    <span className="k-themes">
-      {THEME_ORDER.map((value) => (
-        <button
-          key={value}
-          type="button"
-          className="k-swatch"
-          style={{ background: SWATCH_BG[value] }}
-          aria-pressed={theme === value}
-          aria-label={themeLabel(value, locale)}
-          onClick={() => setStoredTheme(value)}
-        />
-      ))}
-    </span>
-  );
 }
 
 export function KindleHeader({ locale, active, langHrefs }: {
@@ -82,14 +61,10 @@ export function KindleHeader({ locale, active, langHrefs }: {
   );
 }
 
-export function KindleFooter({ locale, theme }: { locale: Locale; theme: Theme }) {
+export function KindleFooter() {
   return (
     <footer className="k-footer">
       <span>© 2026 Adriano Pires Cunha</span>
-      <span className="k-themes-wrap">
-        <span>{locale === 'pt' ? 'Tema' : 'Theme'}</span>
-        <ThemeSwatches locale={locale} theme={theme} />
-      </span>
     </footer>
   );
 }

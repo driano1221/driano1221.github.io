@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useSyncExternalStore, type CSSProperties } from 'react';
-import { ThemeSwatches, useKindleTheme } from './chrome';
+import { useKindleTheme } from './chrome';
 import { Experience } from '../experience';
 import type { Locale } from './theme';
 import './kindle.css';
@@ -47,10 +47,6 @@ export function KindleReader({ locale }: { locale: Locale }) {
             {t('Configurações de exibição', 'Display settings')}
             <button type="button" onClick={() => setPanelOpen(false)} aria-label={t('Fechar', 'Close')}>✕</button>
           </h2>
-          <div className="k-aa-row">
-            <span className="k-aa-lab">{t('Tema', 'Theme')}</span>
-            <ThemeSwatches locale={readerLocale} theme={theme} />
-          </div>
           <div className="k-aa-row">
             <span className="k-aa-lab">{t('Tamanho', 'Size')}</span>
             <span className="k-seg">

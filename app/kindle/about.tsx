@@ -49,7 +49,7 @@ export function KindleAbout({ locale }: { locale: Locale }) {
         </nav>
       </main>
 
-      <KindleFooter locale={locale} theme={theme} />
+      <KindleFooter />
     </div>
   );
 }
