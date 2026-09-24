@@ -14,8 +14,9 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-The home page is `/`, the article is `/pt`, the ocean post is `/oceano`, and the
-biography is `/sobre`. English versions are `/en/home`, `/en`, `/en/ocean`, and `/en/about`.
+The home page is `/`, the article is `/pt`, the ocean post is `/oceano`, projects are
+`/projetos`, and the biography is `/sobre`. English versions are `/en/home`, `/en`,
+`/en/ocean`, `/en/projects`, and `/en/about`.
 
 ## Verify and publish
 
@@ -31,7 +32,7 @@ The full-repository lint currently also reports issues in unused scaffolded
 `components/ui` and `hooks`; lint the modified app files separately.
 
 Pushing `main` runs `.github/workflows/pages.yml`: install the locked dependencies,
-check types and calculations, export the eight public pages to `dist/client`, then
+check types and calculations, export the ten public pages to `dist/client`, then
 publish that folder through GitHub Pages. No personal access token or paid
 service is needed by the workflow. Configure **Settings → Pages → Source →
 GitHub Actions** when reproducing this setup in another repository.

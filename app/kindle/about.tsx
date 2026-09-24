@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { KindleFooter, KindleHeader, useKindleTheme } from './chrome';
+import { contactEmail } from './home';
 import type { Locale } from './theme';
 import './kindle.css';
 
@@ -24,15 +25,22 @@ export function KindleAbout({ locale }: { locale: Locale }) {
         <h1 className="k-about-title">{t('Sobre mim', 'About me')}</h1>
         <p className="k-about-p">
           {t(
-            'Sou Adriano Pires Cunha, estatístico em transição para machine learning. Tenho interesse na relação entre essas áreas, tanto nas técnicas que compartilham quanto nas diferenças que aparecem quando elas são aplicadas a um problema.',
-            'I’m Adriano Pires Cunha, a statistician moving into machine learning. I’m interested in how these fields relate, both in the techniques they share and in the differences that become apparent when they are applied to a problem.',
+            'Sou Adriano Pires Cunha, estatístico formado pela UFOP e mestrando em Ciência da Computação na UFV. Trabalho com dados em pesquisa e em projetos aplicados, e sou assistente de pesquisa no Ipea, onde estudo os consórcios públicos intermunicipais.',
+            'I’m Adriano Pires Cunha, a statistician who studied at UFOP and a master’s student in Computer Science at UFV. I work with data in research and applied projects, and I am a research assistant at Ipea, where I study inter-municipal public consortia in Brazil.',
           )}
         </p>
         <p className="k-about-p">
           {t(
-            'O blog reúne leituras e projetos sobre esses assuntos. A ideia é acompanhar o raciocínio por trás dos métodos, com exemplos e referências que ajudem a entender de onde vieram e como são usados.',
-            'This blog brings together readings and projects on these topics. The aim is to follow the reasoning behind the methods, using examples and references to understand where they came from and how they are used.',
+            'O que mais me interessa é a relação entre a estatística e o machine learning, tanto nas técnicas que as duas compartilham quanto nas diferenças que aparecem quando elas encontram um problema real. No dia a dia isso vira análise reproduzível, visualização e ferramentas que ajudam a responder perguntas de pesquisa e de gestão.',
+            'What interests me most is the relationship between statistics and machine learning, both in the techniques they share and in the differences that show up when they meet a real problem. Day to day, that becomes reproducible analysis, visualisation and tools that help answer research and management questions.',
           )}
+        </p>
+        <p className="k-about-p">
+          {t(
+            'O blog reúne leituras e análises, e a página de projetos mostra o que construí, com código e dados abertos sempre que possível. Para falar comigo, escreva para ',
+            'The blog collects readings and analyses, and the projects page shows what I have built, with open code and data whenever possible. To get in touch, write to ',
+          )}
+          <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
         </p>
         <nav className="k-about-links" aria-label={t('Perfis profissionais', 'Professional profiles')}>
           <a href="https://github.com/driano1221" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>

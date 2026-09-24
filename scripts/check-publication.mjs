@@ -49,8 +49,16 @@ for (const [path, translation, home] of [['/oceano', '/en/ocean', '/'], ['/en/oc
   assert.equal(response.status, 200, path);
   const html = await response.text();
   assert.ok(html.includes('id="post"'), `${path}: ocean post`);
-  assert.ok(html.includes('/posts/oceano-2026/01_espaguete.png'), `${path}: main chart`);
+  assert.ok(html.includes(`/posts/oceano-2026/${path === '/oceano' ? 'pt' : 'en'}/01_espaguete_web.png`), `${path}: chart in the page language`);
+  assert.ok(html.includes('github.com/driano1221/oceano-2026'), `${path}: code and data link`);
   assert.ok(html.includes(`href="${translation}"`), `${path}: translate current post`);
   assert.ok(html.includes(`href="${home}"`), `${path}: back to localized home`);
+}
+for (const [path, translation] of [['/projetos', '/en/projects'], ['/en/projects', '/projetos']]) {
+  const response = await fetch(new URL(path, origin));
+  assert.equal(response.status, 200, path);
+  const html = await response.text();
+  for (const id of ['space-cadet-rl', 'oficina-traducao']) assert.ok(html.includes(`id="${id}"`), `${path}: project ${id}`);
+  assert.ok(html.includes(`href="${translation}"`), `${path}: translate current page`);
 }
 console.log('Publication: localized homes, dedicated about pages, experiments and 17 evidence entries passed.');

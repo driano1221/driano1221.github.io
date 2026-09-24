@@ -13,7 +13,7 @@ export function PublicationHeader({ locale, page = 'home', onLocaleChange }: { l
     <a href={home} className="publication-brand">Adriano Pires Cunha</a>
     <nav aria-label={locale === 'pt' ? 'Navegação principal' : 'Main navigation'}>
       <a href={home} aria-current={page === 'home' || onLocaleChange ? 'page' : undefined}>Blog</a>
-      <a href={`/${locale}`}>{locale === 'pt' ? 'Projetos' : 'Projects'}</a>
+      <a href={locale === 'pt' ? '/projetos' : '/en/projects'}>{locale === 'pt' ? 'Projetos' : 'Projects'}</a>
       <a href={notebookAbout(locale)} aria-current={page === 'about' ? 'page' : undefined}>{locale === 'pt' ? 'Sobre mim' : 'About me'}</a>
       <div className="publication-languages">{(['pt','en'] as const).map(value => onLocaleChange
         ? <button key={value} lang={value === 'pt' ? 'pt-BR' : 'en'} aria-pressed={locale === value} onClick={() => onLocaleChange(value)}>{value.toUpperCase()}</button>
