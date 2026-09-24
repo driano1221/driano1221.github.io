@@ -152,6 +152,21 @@
   font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
 }
 
+/* post em página própria (ex.: /oceano): mesma tipografia do Sobre, figuras no papel */
+/* h1 global do site tem largura curta (pensada para títulos de 2-3 palavras) */
+.k-article h1{max-width:none;font-size:clamp(1.7rem,3.6vw,2.2rem);text-wrap:balance}
+.k-article p{margin:0 0 1rem;font-size:.92rem;line-height:1.75}
+.k-article .k-post-date{margin-bottom:.2rem}
+.k-article figure{margin:1.8rem 0}
+.k-article :is(img,video){display:block;width:100%;height:auto;border:1px solid var(--k-line)}
+/* fundo branco dos gráficos assume a cor do papel; no tema escuro só atenua o brilho */
+.k-home:not([data-ktheme='preto']) .k-article img{mix-blend-mode:multiply}
+.k-home[data-ktheme='preto'] .k-article :is(img,video){filter:brightness(.82)}
+.k-article figcaption{margin-top:.55rem;font-size:.78rem;line-height:1.6;color:var(--k-soft)}
+.k-article .k-article-sources{margin-top:2.2rem;padding-top:1rem;border-top:1px solid var(--k-line);font-size:.78rem;line-height:1.7;color:var(--k-soft)}
+.k-article .k-article-sources a,.k-article-back a{color:var(--k-ink);text-underline-offset:.22em}
+.k-article .k-article-back{margin-top:1.4rem;font-size:.82rem}
+
 /* rodapé com seletor de tema */
 .k-footer{
   display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.7rem 1.4rem;

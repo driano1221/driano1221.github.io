@@ -1,22 +1,23 @@
 'use client';
 
 import { useEffect } from 'react';
-import { notebookHome, oceanPost, PublicationHeader } from './publication';
-import './publication.css';
+import { KindleFooter, KindleHeader, useKindleTheme } from './chrome';
+import type { Locale } from './theme';
+import './kindle.css';
 
-type Locale = 'pt' | 'en';
 const base = '/posts/oceano-2026';
+export const oceanPost = (locale: Locale) => locale === 'pt' ? '/oceano' : '/en/ocean';
 
-export function OceanPost({ locale }: { locale: Locale }) {
+export function KindleOcean({ locale }: { locale: Locale }) {
   const t = (pt: string, en: string) => locale === 'pt' ? pt : en;
+  const theme = useKindleTheme();
   useEffect(() => { document.documentElement.lang = locale === 'pt' ? 'pt-BR' : 'en'; }, [locale]);
-  return <div className="publication-home">
-    <a href="#post" className="publication-skip">{t('Pular para o texto', 'Skip to the post')}</a>
-    <div className="publication-home-sheet">
-      <PublicationHeader locale={locale} alternates={{ pt: oceanPost('pt'), en: oceanPost('en') }}/>
-      <main className="publication-post" id="post">
-        <p className="publication-post-date"><time dateTime="2026-09-23">{t('23 de setembro de 2026', '23 September 2026')}</time></p>
-        <h1>{t('O oceano mais quente desde 1979, e a skill que usei para desenhá-lo', 'The warmest ocean since 1979, and the skill I used to chart it')}</h1>
+  return <div className="k-home" data-ktheme={theme}>
+    <a href="#post" className="k-skip">{t('Pular para o texto', 'Skip to the post')}</a>
+    <KindleHeader locale={locale} active="home" langHrefs={{ pt: oceanPost('pt'), en: oceanPost('en') }}/>
+    <main className="k-main k-article" id="post">
+        <p className="k-post-date"><time dateTime="2026-09-23">{t('23 de setembro de 2026', '23 September 2026')}</time></p>
+        <h1 className="k-about-title">{t('O oceano mais quente desde 1979, e a skill que usei para desenhá-lo', 'The warmest ocean since 1979, and the skill I used to chart it')}</h1>
 
         <p>{t(
           'Quando peço um gráfico a um agente de IA, o resultado costuma sair correto e genérico ao mesmo tempo. As cores, as fontes e o jeito de anotar vêm de um padrão médio, e não das escolhas que já aprovei em outros trabalhos. Essas escolhas estavam anotadas no meu Obsidian, só que nenhum agente lia aquilo antes de começar. Por isso criei a design-vault, uma skill que faz o agente consultar essas regras, perguntar só o que falta, mostrar um rascunho e só então implementar. No fim, ele ainda pergunta se alguma decisão nova merece virar regra.',
@@ -62,15 +63,15 @@ export function OceanPost({ locale }: { locale: Locale }) {
           <figcaption>{t('A mesma série em 12 segundos.', 'The same series in 12 seconds.')}</figcaption>
         </figure>
 
-        <p className="publication-post-sources">{t('Fontes', 'Sources')}:{' '}
+        <p className="k-article-sources">{t('Fontes', 'Sources')}:{' '}
           <a href="https://pulse.climate.copernicus.eu/" target="_blank" rel="noreferrer">Copernicus Climate Pulse (ERA5)</a>,{' '}
           <a href="https://www.ncei.noaa.gov/products/optimum-interpolation-sst" target="_blank" rel="noreferrer">NOAA OISST v2.1</a>,{' '}
           <a href="https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt" target="_blank" rel="noreferrer">NOAA CPC ONI</a>,{' '}
           <a href="https://www.ipcc.ch/report/ar6/wg1/chapter/summary-for-policymakers/" target="_blank" rel="noreferrer">IPCC AR6 WGI</a>.{' '}
           {t('Dados baixados em 23/09/2026, série até 21/09/2026. Gráficos feitos em R com ggplot2, terra e patchwork.', 'Data downloaded on 23 September 2026, series up to 21 September 2026. Charts made in R with ggplot2, terra and patchwork.')}
         </p>
-      </main>
-      <footer className="publication-footer"><span>© 2026 Adriano Pires Cunha</span><a href={notebookHome(locale)}>{t('Voltar ao blog', 'Back to the blog')}</a></footer>
-    </div>
+        <p className="k-article-back"><a href={locale === 'pt' ? '/' : '/en/home'}>{t('← Voltar às publicações', '← Back to the blog')}</a></p>
+    </main>
+    <KindleFooter locale={locale} theme={theme}/>
   </div>;
 }
