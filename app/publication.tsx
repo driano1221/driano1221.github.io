@@ -6,8 +6,9 @@ import './publication.css';
 type Locale = 'pt' | 'en';
 export const notebookHome = (locale: Locale) => locale === 'pt' ? '/' : '/en/home';
 export const notebookAbout = (locale: Locale) => locale === 'pt' ? '/sobre' : '/en/about';
+export const oceanPost = (locale: Locale) => locale === 'pt' ? '/oceano' : '/en/ocean';
 
-export function PublicationHeader({ locale, page = 'home', onLocaleChange }: { locale: Locale; page?: 'home' | 'about'; onLocaleChange?: (locale: Locale) => void }) {
+export function PublicationHeader({ locale, page = 'home', onLocaleChange, alternates }: { locale: Locale; page?: 'home' | 'about'; onLocaleChange?: (locale: Locale) => void; alternates?: Record<Locale, string> }) {
   const home = notebookHome(locale);
   return <header className={`publication-header${onLocaleChange ? ' story-nav' : ''}`}>
     <a href={home} className="publication-brand">Adriano Pires Cunha</a>
@@ -17,7 +18,7 @@ export function PublicationHeader({ locale, page = 'home', onLocaleChange }: { l
       <a href={notebookAbout(locale)} aria-current={page === 'about' ? 'page' : undefined}>{locale === 'pt' ? 'Sobre mim' : 'About me'}</a>
       <div className="publication-languages">{(['pt','en'] as const).map(value => onLocaleChange
         ? <button key={value} lang={value === 'pt' ? 'pt-BR' : 'en'} aria-pressed={locale === value} onClick={() => onLocaleChange(value)}>{value.toUpperCase()}</button>
-        : <a key={value} href={page === 'about' ? notebookAbout(value) : notebookHome(value)} lang={value === 'pt' ? 'pt-BR' : 'en'} aria-current={locale === value ? 'page' : undefined}>{value.toUpperCase()}</a>)}</div>
+        : <a key={value} href={alternates ? alternates[value] : page === 'about' ? notebookAbout(value) : notebookHome(value)} lang={value === 'pt' ? 'pt-BR' : 'en'} aria-current={locale === value ? 'page' : undefined}>{value.toUpperCase()}</a>)}</div>
     </nav>
   </header>;
 }
@@ -33,6 +34,10 @@ export function PublicationHome({ locale }: { locale: Locale }) {
         <section id="posts" aria-labelledby="blog-title">
           <h1 id="blog-title">Blog</h1>
           <ol className="publication-posts"><li>
+            <div className="publication-post-date"><time dateTime="2026-09-23">{t('23 de setembro de 2026', '23 September 2026')}</time></div>
+            <h2><a href={oceanPost(locale)}>{t('O oceano mais quente desde 1979, e a skill que usei para desenhá-lo', 'The warmest ocean since 1979, and the skill I used to chart it')}</a></h2>
+            <p>{t('Um teste da skill que faz agentes de IA seguirem minhas regras de design, com os dados diários de temperatura do mar do Copernicus.', 'A test of the skill that makes AI agents follow my design rules, using Copernicus daily sea surface temperature data.')}</p>
+          </li><li>
             <div className="publication-post-date"><time dateTime="2026-09">{t('Setembro de 2026', 'September 2026')}</time></div>
             <h2><a href={`/${locale}`}>{t('Redes neurais, vistas de 1994', 'Neural networks, seen from 1994')}</a></h2>
             <p>{t('Uma leitura interativa sobre a relação entre estatística e redes neurais, a partir de um artigo de 1994.', 'An interactive reading of a 1994 paper exploring the relationship between statistics and neural networks.')}</p>

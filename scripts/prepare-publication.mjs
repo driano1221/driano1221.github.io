@@ -9,12 +9,12 @@ const output = resolve(dirname(fileURLToPath(import.meta.url)), '../dist/client'
 // Production static exports use document navigation, not Vinext's RSC Link.
 const publication = await readFile(resolve(output, '../../app/publication.tsx'), 'utf8');
 assert.ok(!publication.includes('next/link'), 'Keep portfolio links native: the static RSC navigation failed in production');
-for (const file of ['index.html', 'pt.html', 'en.html', 'en/home.html', 'sobre.html', 'en/about.html']) {
+for (const file of ['index.html', 'pt.html', 'en.html', 'en/home.html', 'sobre.html', 'en/about.html', 'oceano.html', 'en/ocean.html']) {
   await access(resolve(output, file));
 }
 // Pages has no application server or rewrite rules. Directory entrypoints also
 // make /en/ work alongside /en/home/; retain flat exports for existing links.
-for (const route of ['pt', 'en', 'en/home', 'sobre', 'en/about']) {
+for (const route of ['pt', 'en', 'en/home', 'sobre', 'en/about', 'oceano', 'en/ocean']) {
   const directory = resolve(output, route);
   await mkdir(directory, { recursive: true });
   await copyFile(resolve(output, route + '.html'), resolve(directory, 'index.html'));
@@ -32,4 +32,4 @@ for (const page of ['pt', 'en']) {
   const html = await readFile(resolve(output, page + '.html'), 'utf8');
   assert.ok(!html.includes('id="author"'), 'Article must not contain the biography');
 }
-console.log('Public export ready: six portfolio pages; four design previews kept local.');
+console.log('Public export ready: eight portfolio pages; four design previews kept local.');
