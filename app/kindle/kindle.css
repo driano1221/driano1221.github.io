@@ -188,3 +188,7 @@
 @media (prefers-reduced-motion:reduce){
   .k-home,.k-home *{transition:none!important}
 }
+/* reações e comentários (giscus) no fim dos posts */
+.k-article .k-comments{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--k-line)}
+.k-article .k-comments-title{font-size:1.05rem;margin:0 0 .3rem;color:var(--k-ink)}
+.k-article .k-comments-note{font-size:.78rem;color:var(--k-soft);margin:0 0 1rem}

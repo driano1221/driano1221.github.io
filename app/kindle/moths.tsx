@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { KindleFooter, KindleHeader, useKindleTheme } from './chrome';
 import type { Locale } from './theme';
+import { KindleComments } from './comments';
 import './kindle.css';
 
 export const mothsPost = (locale: Locale) => locale === 'pt' ? '/mariposas' : '/en/moths';
@@ -162,6 +163,7 @@ export function KindleMoths({ locale }: { locale: Locale }) {
         <a href="https://doi.org/10.5281/zenodo.13699591" target="_blank" rel="noreferrer">{t('código dos autores no Zenodo', 'authors’ code on Zenodo')}</a>.{' '}
         {t('Dados baixados em 02/10/2026. Gráficos feitos em R com ggplot2, sf, survival, coxme e glmmTMB.', 'Data downloaded on 2 October 2026. Charts made in R with ggplot2, sf, survival, coxme and glmmTMB.')}
       </p>
+      <KindleComments locale={locale} post="mariposas-2026"/>
       <p className="k-article-back"><a href={locale === 'pt' ? '/' : '/en/home'}>{t('← Voltar às publicações', '← Back to the blog')}</a></p>
     </main>
     <KindleFooter />

@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { KindleFooter, KindleHeader, useKindleTheme } from './chrome';
 import type { Locale } from './theme';
+import { KindleComments } from './comments';
 import './kindle.css';
 
 export const oceanPost = (locale: Locale) => locale === 'pt' ? '/oceano' : '/en/ocean';
@@ -105,6 +106,7 @@ export function KindleOcean({ locale }: { locale: Locale }) {
         <a href="https://www.ipcc.ch/report/ar6/wg1/chapter/summary-for-policymakers/" target="_blank" rel="noreferrer">IPCC AR6 WGI</a>.{' '}
         {t('Dados baixados em 23/09/2026, série até 21/09/2026. Gráficos feitos em R com ggplot2, terra e patchwork.', 'Data downloaded on 23 September 2026, series up to 21 September 2026. Charts made in R with ggplot2, terra and patchwork.')}
       </p>
+      <KindleComments locale={locale} post="oceano-2026"/>
       <p className="k-article-back"><a href={locale === 'pt' ? '/' : '/en/home'}>{t('← Voltar às publicações', '← Back to the blog')}</a></p>
     </main>
     <KindleFooter />

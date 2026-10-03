@@ -1,0 +1,16 @@
+/* Tema do giscus com as cores do papel do blog: parte do tema claro e troca fundo, texto e bordas. */
+@import url("https://giscus.app/themes/light.css");
+
+main {
+  --color-canvas-default: #f7f4ea;
+  --color-canvas-subtle: #f1ecdd;
+  --color-canvas-inset: #f1ecdd;
+  --color-fg-default: #211f16;
+  --color-fg-muted: #5d5847;
+  --color-border-default: #d5cdb8;
+  --color-border-muted: #e2dbc8;
+  --color-accent-fg: #211f16;
+  --color-accent-emphasis: #211f16;
+  --color-btn-primary-bg: #211f16;
+  --color-btn-primary-hover-bg: #3a372b;
+}
