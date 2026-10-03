@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { KindleFooter, KindleHeader, useKindleTheme } from './chrome';
 import { oceanPost } from './ocean';
+import { mothsPost } from './moths';
 import type { Locale } from './theme';
 import './kindle.css';
 
@@ -25,6 +26,16 @@ export function KindleHome({ locale }: { locale: Locale }) {
 
       <main className="k-main" id="publicacoes">
         <h1 className="k-seclabel" id="blog-title">{t('Publicações', 'Blog')}</h1>
+        <article className="k-post">
+          <p className="k-post-date"><time dateTime="2026-10-02">{t('2 de outubro de 2026', '2 October 2026')}</time></p>
+          <h2 className="k-post-title"><a href={mothsPost(locale)}>{t('15 mil mariposas de papel', '15,000 paper moths')}</a></h2>
+          <p className="k-post-desc">
+            {t(
+              'Uma reanálise com curvas de sobrevivência do experimento da Science que prendeu mariposas de papel em árvores de 21 bosques, com uma noite que não era bem noite.',
+              'A survival-curve reanalysis of the Science experiment that pinned paper moths to trees in 21 woods, with a night that was not quite night.',
+            )}
+          </p>
+        </article>
         <article className="k-post">
           <p className="k-post-date"><time dateTime="2026-09-23">{t('23 de setembro de 2026', '23 September 2026')}</time></p>
           <h2 className="k-post-title"><a href={oceanPost(locale)}>{t('O dia mais quente do oceano desde 1979', 'The ocean’s warmest day since 1979')}</a></h2>

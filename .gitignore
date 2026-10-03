@@ -37,3 +37,6 @@ next-env.d.ts
 /outputs/
 /work/
 *.tsbuildinfo
+
+# histórico local de plugin (o Tailwind varre arquivos fora do .gitignore e quebra com caminhos do Windows)
+.recall/
