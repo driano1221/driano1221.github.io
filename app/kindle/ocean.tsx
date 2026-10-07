@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { KindleFooter, KindleHeader, useKindleTheme } from './chrome';
 import type { Locale } from './theme';
 import { KindleComments } from './comments';
+import { FigureImage } from './figure-image';
 import './kindle.css';
 
 export const oceanPost = (locale: Locale) => locale === 'pt' ? '/oceano' : '/en/ocean';
@@ -44,7 +45,7 @@ export function KindleOcean({ locale }: { locale: Locale }) {
       </dl>
 
       <figure className="k-wide">
-        <img src={img('01_espaguete_web.png')} width={1600} height={1004}
+        <FigureImage src={img('01_espaguete_web.png')} width={1600} height={1004} locale={locale} loading="eager"
           alt={t('Uma linha por ano de 1979 a 2026 com a temperatura média diária da superfície do mar. A linha de 2026 fica acima de todas desde junho e atinge 21,11 °C em 24 de agosto; a linha tracejada é a média de 1991 a 2020.', 'One line per year from 1979 to 2026 showing daily mean sea surface temperature. The 2026 line sits above all others from June and reaches 21.11°C on 24 August; the dashed line is the 1991 to 2020 average.')}/>
         <figcaption>{t('Cada linha é um ano. A vermelha é 2026, e a tracejada é a média de 1991 a 2020.', 'Each line is a year. The red one is 2026, and the dashed one is the 1991 to 2020 average.')}</figcaption>
       </figure>
@@ -58,7 +59,7 @@ export function KindleOcean({ locale }: { locale: Locale }) {
         'That period coincides with a shift in the Pacific. The [ONI](https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt), the index NOAA uses to track El Niño, was at −0.6 at the end of 2025 and reached +1.8 between June and August. The August map shows that warm band in the equatorial Pacific, where the average anomaly reached 2.6°C, but it also shows that the heat was not confined there: 85% of the ocean area was above the 1991 to 2020 average.',
       ))}</p>
       <figure>
-        <img src={img('03_mapa.png')} width={1220} height={1525} loading="lazy"
+        <FigureImage src={img('03_mapa.png')} width={1220} height={1525} locale={locale}
           alt={t('Mapa-múndi da anomalia de temperatura do mar em agosto de 2026. Quase todo o oceano aparece em tons de vermelho, com a faixa mais quente no Pacífico equatorial.', 'World map of sea surface temperature anomaly in August 2026. Almost the whole ocean is shaded red, with the warmest band in the equatorial Pacific.')}/>
         <figcaption>{t('Anomalia de agosto de 2026 em relação a 1991 a 2020, com dados do NOAA OISST.', 'August 2026 anomaly relative to 1991 to 2020, from NOAA OISST data.')}</figcaption>
       </figure>
@@ -72,7 +73,7 @@ export function KindleOcean({ locale }: { locale: Locale }) {
         'The stripes below summarise the series with one colour per year. Since 2012, every year has been above the 1991 to 2020 average. For 2026, the average up to September is level with 2024, the warmest full year in the series, and the coming months will tell whether it moves ahead.',
       )}</p>
       <figure className="k-wide">
-        <img src={img('02_stripes_web.png')} width={1600} height={902} loading="lazy"
+        <FigureImage src={img('02_stripes_web.png')} width={1600} height={902} locale={locale}
           alt={t('Faixas coloridas, uma por ano de 1979 a 2026, do azul nos anos 1980 ao vermelho escuro nos anos 2020.', 'Coloured stripes, one per year from 1979 to 2026, going from blue in the 1980s to dark red in the 2020s.')}/>
       </figure>
 
@@ -86,7 +87,7 @@ export function KindleOcean({ locale }: { locale: Locale }) {
       )}</p>
       <figure>
         {/* GIF em vez de vídeo: como imagem, recebe o multiply e o fundo branco vira papel */}
-        <img src={img('04_animacao.gif')} width={720} height={900} loading="lazy"
+        <FigureImage src={img('04_animacao.gif')} width={720} height={900} locale={locale}
           alt={t('Animação: os anos entram um a um desde 1979, em cinza, e 2026 é desenhado por último, em vermelho, até passar de todos em agosto.', 'Animation: years appear one by one from 1979 in grey, and 2026 is drawn last in red until it rises above all of them in August.')}/>
       </figure>
 

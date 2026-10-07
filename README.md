@@ -3,7 +3,7 @@
 Adriano's bilingual blog on statistics and AI, with interactive explanations
 of Cheng & Titterington's 1994 paper on neural networks.
 
-**Planned public address:** https://driano1221.github.io/ (the `kindle-ui` branch is not published there).
+**Public address:** https://driano1221.github.io/ (published from `main`).
 
 ## Run locally
 
@@ -14,25 +14,27 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-The home page is `/`, the article is `/pt`, the ocean post is `/oceano`, projects are
-`/projetos`, and the biography is `/sobre`. English versions are `/en/home`, `/en`,
-`/en/ocean`, `/en/projects`, and `/en/about`.
+The home page is `/`, the article is `/pt`, the ocean and moths posts are
+`/oceano` and `/mariposas`, projects are `/projetos`, and the biography is `/sobre`.
+English versions are `/en/home`, `/en`, `/en/ocean`, `/en/moths`, `/en/projects`,
+and `/en/about`.
 
 ## Verify and publish
 
 ```sh
 pnpm exec tsc --noEmit
 pnpm run check:morph
+pnpm run lint
 pnpm run build
 ```
 
 For the static-export smoke check, serve `dist/client` locally and run
 `PUBLICATION_CHECK_ORIGIN=<local URL> node scripts/check-publication.mjs`.
-The full-repository lint currently also reports issues in unused scaffolded
-`components/ui` and `hooks`; lint the modified app files separately.
+The lint command checks the application, scripts, library code and the shared
+slider. The unused UI scaffolding and hook are not part of the published app.
 
 Pushing `main` runs `.github/workflows/pages.yml`: install the locked dependencies,
-check types and calculations, export the ten public pages to `dist/client`, then
+check types and calculations, export the twelve public pages to `dist/client`, then
 publish that folder through GitHub Pages. No personal access token or paid
 service is needed by the workflow. Configure **Settings → Pages → Source →
 GitHub Actions** when reproducing this setup in another repository.
@@ -50,13 +52,15 @@ For example: home → article → equal inputs → switch language → About →
 
 ## How it fits together
 
-- `app/kindle/home.tsx`, `about.tsx` and `chrome.tsx`: home, About, navigation and themes.
+- `app/kindle/home.tsx`, `about.tsx`, `projects.tsx`, `ocean.tsx`, `moths.tsx`
+  and `chrome.tsx`: blog, projects, posts, About and navigation.
+- `app/kindle/figure-image.tsx`: opens charts at full resolution for mobile reading.
 - `app/kindle/reader.tsx` and `reader.css`: article reader, display settings and theme overrides.
 - `app/publication.tsx` and `app/publication.css`: article header and base publication styles.
 - `app/experience.tsx` and `app/story-*.tsx`: article and interactive explanations.
 - `lib/`: calculations, learning rules and evidence references.
-- `scripts/prepare-publication.mjs`: validates the export, adds directory
-  entrypoints for static hosting and excludes design-preview pages.
+- `scripts/prepare-publication.mjs`: validates the export, localizes the static
+  English HTML, adds directory entrypoints and excludes design-preview pages.
 
 The website is a static React/Vinext export, with no database or visitor login.
 Navigation between pages uses normal HTML links; changing language inside the

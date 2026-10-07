@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { KindleFooter, KindleHeader, useKindleTheme } from './chrome';
 import type { Locale } from './theme';
+import { FigureImage } from './figure-image';
 import './kindle.css';
 
 export const projectsPage = (locale: Locale) => locale === 'pt' ? '/projetos' : '/en/projects';
@@ -65,7 +66,7 @@ export function KindleProjects({ locale }: { locale: Locale }) {
       {projectList(locale).map(project => <article key={project.id} id={project.id} className="k-project">
         <h2 className="k-post-title">{project.title}</h2>
         <figure>
-          <img src={project.image} width={project.width} height={project.height} loading="lazy" alt={project.alt}/>
+          <FigureImage src={project.image} width={project.width} height={project.height} locale={locale} alt={project.alt}/>
         </figure>
         {project.paragraphs.map(text => <p key={text.slice(0, 24)}>{text}</p>)}
         <p className="k-project-links">{project.links.map(([label, href], i) => <span key={href}>

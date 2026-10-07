@@ -1,4 +1,4 @@
-import { access, copyFile, mkdir, readFile, unlink } from 'node:fs/promises';
+import { access, copyFile, mkdir, readFile, unlink, writeFile } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
@@ -17,7 +17,16 @@ for (const file of ['index.html', 'pt.html', 'en.html', 'en/home.html', 'sobre.h
 for (const route of ['pt', 'en', 'en/home', 'sobre', 'en/about', 'oceano', 'en/ocean', 'mariposas', 'en/moths', 'projetos', 'en/projects']) {
   const directory = resolve(output, route);
   await mkdir(directory, { recursive: true });
-  await copyFile(resolve(output, route + '.html'), resolve(directory, 'index.html'));
+  const flat = resolve(output, route + '.html');
+  if (route === 'en' || route.startsWith('en/')) {
+    const html = await readFile(flat, 'utf8');
+    assert.ok(html.includes('<html lang="pt-BR"'), `${route}: expected root language before localization`);
+    const english = html.replace('<html lang="pt-BR"', '<html lang="en"');
+    await writeFile(flat, english);
+    await writeFile(resolve(directory, 'index.html'), english);
+  } else {
+    await copyFile(flat, resolve(directory, 'index.html'));
+  }
 }
 for (const route of ['caderno', 'direcoes', 'identidades', 'inference']) {
   for (const extension of ['html', 'rsc']) {

@@ -10,7 +10,7 @@
     "build": "vinext build && node scripts/prepare-publication.mjs",
     "check:morph": "node scripts/check-morph.mjs",
     "start": "wrangler dev --config dist/server/wrangler.json",
-    "lint": "oxlint",
+    "lint": "oxlint app lib scripts components/ui/slider.tsx",
     "format": "oxfmt"
   },
   "dependencies": {

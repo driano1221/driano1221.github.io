@@ -46,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={`${editorial.variable} ${interfaceFont.variable} ${dataFont.variable} ${literata.variable} ${inter.variable}`}
       >

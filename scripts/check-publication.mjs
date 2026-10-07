@@ -2,6 +2,11 @@ import assert from 'node:assert/strict';
 
 // Run with the local preview already serving: node scripts/check-publication.mjs.
 const origin = process.env.PUBLICATION_CHECK_ORIGIN || 'http://localhost:3000';
+for (const path of ['/en', '/en/home', '/en/about', '/en/projects', '/en/ocean', '/en/moths']) {
+  const response = await fetch(new URL(path, origin));
+  assert.equal(response.status, 200, path);
+  assert.match(await response.text(), /<html lang="en"/, `${path}: English declared in static HTML`);
+}
 for (const [path, title, article] of [
   ['/', 'Adriano Pires Cunha', '/pt'],
   ['/en/home', 'Adriano Pires Cunha', '/en'],

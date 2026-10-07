@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { KindleFooter, KindleHeader, useKindleTheme } from './chrome';
 import type { Locale } from './theme';
 import { KindleComments } from './comments';
+import { FigureImage } from './figure-image';
 import './kindle.css';
 
 export const mothsPost = (locale: Locale) => locale === 'pt' ? '/mariposas' : '/en/moths';
@@ -53,7 +54,7 @@ export function KindleMoths({ locale }: { locale: Locale }) {
       )}</p>
 
       <figure className="k-wide">
-        <img src={img('01_mapa.png')} width={1600} height={1004}
+        <FigureImage src={img('01_mapa.png')} width={1600} height={1004} locale={locale} loading="eager"
           alt={t('Mapa-múndi pontilhado com uma rosca em cada um dos 21 bosques, dividida entre mariposas levadas por aves, por outros predadores e ainda inteiras. A Holanda tem quase tudo inteiro; o leste da Austrália, quase tudo levado por aves.', 'Dotted world map with a ring on each of the 21 woods, split between moths taken by birds, by other predators and still intact. The Netherlands is almost all intact; eastern Australia is almost all taken by birds.')}/>
         <figcaption>{t('Cada rosca é um bosque: o que tinha acontecido com as mariposas até o amanhecer seguinte.', 'Each ring is a wood: what had happened to its moths by the next dawn.')}</figcaption>
       </figure>
@@ -68,7 +69,7 @@ export function KindleMoths({ locale }: { locale: Locale }) {
       )}</p>
 
       <figure className="k-wide">
-        <img src={img('02_sobrevivencia.png')} width={1600} height={1004} loading="lazy"
+        <FigureImage src={img('02_sobrevivencia.png')} width={1600} height={1004} locale={locale}
           alt={t('Três painéis de curvas em escadinha, uma por cor de mariposa. Nos 21 bosques juntos as três linhas quase se sobrepõem; na República Tcheca a laranja e a turquesa caem mais que a camuflada; na Serra do Japi a laranja resiste mais.', 'Three panels of step curves, one per moth colour. For all 21 woods the three lines almost overlap; in the Czech Republic orange and turquoise drop further than the camouflaged one; in Serra do Japi the orange one holds up best.')}/>
         <figcaption>{t('Porcentagem de mariposas ainda inteiras a cada visita. A faixa com a lua é a noite.', 'Share of moths still intact at each check. The band with the moon is the night.')}</figcaption>
       </figure>
@@ -83,7 +84,7 @@ export function KindleMoths({ locale }: { locale: Locale }) {
       )}</p>
 
       <figure className="k-wide">
-        <img src={img('03_dias.png')} width={1600} height={1004} loading="lazy"
+        <FigureImage src={img('03_dias.png')} width={1600} height={1004} locale={locale}
           alt={t('Oito pequenos gráficos, um por dia do experimento, com a curva do dia em vermelho e a do primeiro dia em cinza. A porcentagem de mariposas inteiras ao amanhecer cai de 61% no primeiro dia para 39% no oitavo.', 'Eight small charts, one per day of the experiment, with that day’s curve in red and the first day’s in grey. The share of moths intact at dawn falls from 61% on day one to 39% on day eight.')}/>
         <figcaption>{t('Cada painel é um dia do experimento; a linha cinza é o primeiro dia, como referência.', 'Each panel is a day of the experiment; the grey line is day one, for reference.')}</figcaption>
       </figure>
@@ -94,7 +95,7 @@ export function KindleMoths({ locale }: { locale: Locale }) {
       )}</p>
 
       <figure className="k-wide">
-        <img src={img('04_predacao.png')} width={1600} height={1004} loading="lazy"
+        <FigureImage src={img('04_predacao.png')} width={1600} height={1004} locale={locale}
           alt={t('Dois painéis com o risco da mariposa laranja dividido pelo da camuflada, do 1º ao 8º dia. Com pouca predação a linha sobe de 0,8 para 1,4 vez, sempre dentro da margem de incerteza; com muita predação ela cai de 1,5 para 0,7 vez.', 'Two panels with the orange moth’s risk divided by the camouflaged one’s, from day 1 to day 8. With little predation the line rises from 0.8 to 1.4 times, always within the uncertainty band; with heavy predation it falls from 1.5 to 0.7 times.')}/>
         <figcaption>{t('Acima da linha tracejada, a laranja foi mais atacada que a camuflada; abaixo, menos.', 'Above the dashed line, the orange moth was attacked more than the camouflaged one; below it, less.')}</figcaption>
       </figure>
@@ -109,7 +110,7 @@ export function KindleMoths({ locale }: { locale: Locale }) {
       )}</p>
 
       <figure className="k-wide">
-        <img src={img('05_destino.png')} width={1600} height={1004} loading="lazy"
+        <FigureImage src={img('05_destino.png')} width={1600} height={1004} locale={locale}
           alt={t('Três faixas de cem triângulos, uma por visita. Ao meio-dia, 15 vermelhos (aves) e 7 azuis (outros predadores); no fim da tarde, 22 e 11; depois de uma faixa de noite, ao amanhecer, 35 e 16, com 49 ainda inteiros.', 'Three strips of a hundred triangles, one per check. At noon, 15 red (birds) and 7 blue (other predators); in the late afternoon, 22 and 11; after a night band, at dawn, 35 and 16, with 49 still intact.')}/>
         <figcaption>{t('Cada triângulo é uma mariposa em cada cem; a faixa com a lua é a noite.', 'Each triangle is one moth in a hundred; the band with the moon is the night.')}</figcaption>
       </figure>
@@ -124,7 +125,7 @@ export function KindleMoths({ locale }: { locale: Locale }) {
       )}</p>
 
       <figure className="k-wide">
-        <img src={img('07_noite.png')} width={1600} height={1004} loading="lazy"
+        <FigureImage src={img('07_noite.png')} width={1600} height={1004} locale={locale}
           alt={t('Uma barra por bosque, do horário da visita do fim da tarde ao da visita do amanhecer. Trechos amarelos são horas de sol e trechos azul-escuros são escuro; a Finlândia tem 10 horas de sol no intervalo e a Holanda, 1.', 'One bar per wood, from the late-afternoon check to the dawn check. Yellow stretches are hours of sunlight and dark blue stretches are darkness; Finland has 10 hours of sun in the interval and the Netherlands 1.')}/>
         <figcaption>{t('Em amarelo, as horas de sol dentro do intervalo que o estudo trata como noite.', 'In yellow, the hours of sunlight inside the interval the study treats as night.')}</figcaption>
       </figure>
@@ -135,7 +136,7 @@ export function KindleMoths({ locale }: { locale: Locale }) {
       )}</p>
 
       <figure className="k-wide">
-        <img src={img('08_ataques_noite.png')} width={1600} height={1004} loading="lazy"
+        <FigureImage src={img('08_ataques_noite.png')} width={1600} height={1004} locale={locale}
           alt={t('Uma barra por bosque com a porcentagem de mariposas levadas por “ave” entre o fim da tarde e o amanhecer. O trecho amarelo é o que as horas de sol explicariam; o resto aconteceu no escuro. Austrália (leste) chega a 91%, quase todo no escuro.', 'One bar per wood with the share of moths taken by a “bird” between late afternoon and dawn. The yellow part is what the hours of sunlight would explain; the rest happened in the dark. Australia (east) reaches 91%, almost all of it in the dark.')}/>
         <figcaption>{t('Em amarelo, o que as aves levariam nas horas de sol; o resto aconteceu no escuro.', 'In yellow, what birds would take in the sunny hours; the rest happened in the dark.')}</figcaption>
       </figure>
